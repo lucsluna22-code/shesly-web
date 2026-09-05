@@ -1,0 +1,48 @@
+{#
+  Las dos opciones de compra, bien separadas.
+  Se usa en la página de la formación. Los datos salen de las opciones del
+  inicio (Página de inicio → Cierre), así el precio se edita en un solo lugar.
+  Si una formación necesita opciones propias, se cargan en su archivo con
+  "opciones:" y estas mandan.
+#}
+{% macro opcionesCompra(ops, wa, titulo, bajada, nota) %}
+{% if ops and ops.length %}
+<section class="pt-16 md:pt-24">
+  <div id="opciones" class="flex items-center gap-6 mb-10 md:mb-14 scroll-mt-6">
+    <div class="h-[1px] flex-1 bg-stone-100"></div>
+    <h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-stone-400 text-center">{{ titulo or "Elige cómo empezar" }}</h2>
+    <div class="h-[1px] flex-1 bg-stone-100"></div>
+  </div>
+
+  {% if bajada %}
+  <p class="max-w-2xl mx-auto text-center text-base md:text-xl text-stone-500 font-light leading-relaxed mb-12 md:mb-16">{{ bajada }}</p>
+  {% endif %}
+
+  <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+    {% for o in ops %}
+    <div class="relative rounded-[2.5rem] md:rounded-[3rem] p-8 md:p-11 flex flex-col shadow-xl reveal-on-scroll
+                {% if o.destacado %}bg-stone-900 text-white border border-stone-800{% else %}glass-card border-white/80{% endif %}"
+         style="transition-delay: {{ loop.index0 * 120 }}ms;">
+      {% if o.destacado %}
+      <span class="absolute -top-3 left-8 md:left-11 px-4 py-1.5 rounded-full bg-brand text-white text-[9px] font-black uppercase tracking-[0.3em] shadow-lg">Más elegido</span>
+      {% endif %}
+      <h3 class="font-serif text-2xl md:text-3xl leading-tight {% if o.destacado %}text-white{% else %}text-stone-900{% endif %}">{{ o.titulo }}</h3>
+      <p class="mt-5 font-serif text-4xl md:text-5xl {% if o.destacado %}text-white{% else %}text-stone-900{% endif %}">{{ o.precio }}</p>
+      {% if o.precio_nota %}<p class="mt-2 text-xs {% if o.destacado %}text-white/50{% else %}text-stone-400{% endif %}">{{ o.precio_nota }}</p>{% endif %}
+      <p class="mt-4 text-sm md:text-base font-light leading-relaxed mb-9 flex-1 {% if o.destacado %}text-white/70{% else %}text-stone-500{% endif %}">{{ o.detalle }}</p>
+      <a href="{{ o.url or wa }}" {% if o.url %}target="_blank" rel="noopener noreferrer" data-evento="pagar"{% endif %}
+         class="block text-center px-8 py-5 rounded-full font-bold tracking-[0.2em] text-[10px] uppercase transition-all transform hover:-translate-y-1 shadow-2xl
+                {% if o.destacado %}bg-white text-stone-900 hover:bg-brand hover:text-white{% else %}bg-stone-900 text-white hover:bg-brand-dark{% endif %}">{{ o.boton }}</a>
+    </div>
+    {% endfor %}
+  </div>
+
+  {% if nota %}
+  <p class="mt-10 md:mt-14 text-center text-xs md:text-sm text-stone-400 font-light max-w-xl mx-auto">
+    {{ nota }}
+    <a href="{{ wa }}" target="_blank" rel="noopener noreferrer" class="underline decoration-brand/40 hover:text-brand-dark">WhatsApp</a>.
+  </p>
+  {% endif %}
+</section>
+{% endif %}
+{% endmacro %}

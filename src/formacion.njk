@@ -11,7 +11,10 @@ eleventyComputed:
   imagenPagina: "{{ f.data.imagenes[0] or site.seo.og_imagen }}"
 ---
 {% import "partials/iconos.njk" as ico %}
+{% import "partials/opciones-compra.njk" as compra %}
 {% set d = f.data %}
+{# Las dos opciones de compra: propias de la formación si las tiene, si no las del inicio. #}
+{% set ops = d.opciones or home.cierre.opciones %}
 {% set titulo = d.titulo_largo or d.titulo %}
 {% set palabras = titulo.split(" ") %}
 {% set wa = "https://wa.me/" + site.contacto.whatsapp + "?text=" + (d.mensaje_whatsapp | urlencode) %}
@@ -158,14 +161,16 @@ eleventyComputed:
             </div>
 
             {% if d.stripe_url %}
+            {# Con dos opciones abajo, acá va un solo botón que lleva a elegir. #}
+            {% if ops and ops.length > 1 %}
+            <a href="#opciones" data-evento="ver-opciones" data-formacion="{{ d.slug }}"
+               class="w-full py-5 bg-stone-900 text-white rounded-[2rem] font-bold uppercase tracking-[0.25em] text-[10px] hover:bg-brand-dark transition-all transform hover:-translate-y-1 shadow-xl active:scale-95 flex items-center justify-center gap-3">
+              Ver las dos opciones
+            </a>
+            {% else %}
             <a href="{{ d.stripe_url }}" target="_blank" rel="noopener noreferrer" data-evento="pagar" data-formacion="{{ d.slug }}"
                class="w-full py-5 bg-stone-900 text-white rounded-[2rem] font-bold uppercase tracking-[0.25em] text-[10px] hover:bg-brand-dark transition-all transform hover:-translate-y-1 shadow-xl active:scale-95 flex items-center justify-center gap-3">
               {{ d.boton_texto or d.evento.etiqueta_boton }}
-            </a>
-            {% if d.stripe_url_2 and d.boton2_texto %}
-            <a href="{{ d.stripe_url_2 }}" target="_blank" rel="noopener noreferrer" data-evento="pagar" data-formacion="{{ d.slug }}-taller"
-               class="w-full py-4 bg-white/70 border border-white text-stone-700 rounded-[2rem] font-bold uppercase tracking-[0.25em] text-[10px] hover:bg-white transition-all flex items-center justify-center gap-3">
-              {{ d.boton2_texto }}
             </a>
             {% endif %}
             <a href="{{ wa }}" target="_blank" rel="noopener noreferrer" data-formacion="{{ d.slug }}"
@@ -187,5 +192,10 @@ eleventyComputed:
       </aside>
 
     </div>
+
+    <div class="max-w-4xl mx-auto">
+      {{ compra.opcionesCompra(ops, wa, "Elige cómo empezar", home.cierre.bajada, home.cierre.nota) }}
+    </div>
+
   </div>
 </div>

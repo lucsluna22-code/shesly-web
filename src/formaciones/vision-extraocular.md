@@ -35,7 +35,7 @@ imagenes:
   - "/assets/img/veo-2.jpg"
 evento:
   nombre: "Programa de 5 semanas"
-  precio: "$199 USD"
+  precio: "$49 o $199 USD"
   etiqueta: "Próxima fecha"
   descripcion: "Cinco sesiones grupales, una por semana, en vivo por Zoom. Eliges viernes a las 18:00 o sábado a las 10:00 (hora CDMX). Incluye el manual, la carpeta con el material para imprimir y el grupo de WhatsApp del curso. Puedes empezar con una sesión suelta de $49 USD antes de tomar el programa completo."
   online: true

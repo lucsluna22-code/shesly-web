@@ -40,7 +40,7 @@ hero:
   bajada_destacado: "más de 600 sesiones online"
   bajada_final: ", en el camino que abrió el neurofisiólogo mexicano Jacobo Grinberg."
   boton_texto: "Ver el entrenamiento"
-  boton_url: "/formaciones/vision-extraocular/"
+  boton_url: "/#banner"
   boton2_texto: "Ver una clase real"
   boton2_url: "/#prueba"
   imagen: "/assets/img/retrato-1.jpg"

@@ -87,7 +87,8 @@ funcionando.
 - **Testimonios:** quedan sin nombre ni foto, como pediste.
 - **El banner de la formación** usa la portada nueva que dejaste en la carpeta. La imagen
   entera es un enlace: al hacer clic lleva a la página con el programa completo y el botón
-  de compra.
+  de compra. El primer botón del encabezado, "Ver el entrenamiento", baja hasta ese banner:
+  primero ven la portada y desde ahí entran al programa.
 - **La página de gracias** abre con el botón del grupo de WhatsApp, y los pasos que siguen
   se renumeran solos según haya enlace de grupo cargado o no.
 

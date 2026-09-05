@@ -20,9 +20,9 @@
 
   <div class="grid md:grid-cols-2 gap-6 md:gap-8">
     {% for o in ops %}
-    <div class="relative rounded-[2.5rem] md:rounded-[3rem] p-8 md:p-11 flex flex-col shadow-xl reveal-on-scroll
+    <div class="relative rounded-[2.5rem] md:rounded-[3rem] p-8 md:p-11 flex flex-col shadow-xl
                 {% if o.destacado %}bg-stone-900 text-white border border-stone-800{% else %}glass-card border-white/80{% endif %}"
-         style="transition-delay: {{ loop.index0 * 120 }}ms;">
+>
       {% if o.destacado %}
       <span class="absolute -top-3 left-8 md:left-11 px-4 py-1.5 rounded-full bg-brand text-white text-[9px] font-black uppercase tracking-[0.3em] shadow-lg">Más elegido</span>
       {% endif %}

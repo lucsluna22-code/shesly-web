@@ -89,13 +89,13 @@ funcionando.
   entera es un enlace: al hacer clic lleva a la página con el programa completo y el botón
   de compra. El primer botón del encabezado, "Ver el entrenamiento", baja hasta ese banner:
   primero ven la portada y desde ahí entran al programa.
-- **Las dos opciones de compra** ahora también están en la página del programa, con las
-  mismas tarjetas que el inicio: "Una probadita" a $49 y "La experiencia completa" a $199,
-  marcada como *Más elegido*. Los precios se editan en un solo lugar —*Página de inicio →
-  Cierre → Opciones*— y cambian en las dos páginas a la vez. En la tarjeta lateral quedó un
-  solo botón, "Ver las dos opciones", que baja hasta ahí: antes había tres botones de compra
-  compitiendo en la misma pantalla. La tarjeta lateral tampoco muestra precio: solo la
-  fecha, qué incluye y el formato. El precio aparece una sola vez, abajo, al elegir.
+- **La página del programa quedó en una sola columna.** Se fue la tarjeta del costado; la
+  página ahora se lee de arriba abajo: qué es → cuándo, modalidad y duración → temario →
+  fotos → qué incluye → las dos opciones de compra. El precio aparece una sola vez, al
+  final, en el momento de elegir.
+- **Las dos opciones de compra** son las mismas tarjetas del inicio: "Una probadita" a $49 y
+  "La experiencia completa" a $199, marcada como *Más elegido*. Los precios se editan en un
+  solo lugar —*Página de inicio → Cierre → Opciones*— y cambian en las dos páginas a la vez.
 - **La página de gracias** abre con el botón del grupo de WhatsApp, y los pasos que siguen
   se renumeran solos según haya enlace de grupo cargado o no.
 

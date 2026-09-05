@@ -94,7 +94,8 @@ funcionando.
   marcada como *Más elegido*. Los precios se editan en un solo lugar —*Página de inicio →
   Cierre → Opciones*— y cambian en las dos páginas a la vez. En la tarjeta lateral quedó un
   solo botón, "Ver las dos opciones", que baja hasta ahí: antes había tres botones de compra
-  compitiendo en la misma pantalla.
+  compitiendo en la misma pantalla. La tarjeta lateral tampoco muestra precio: solo la
+  fecha, qué incluye y el formato. El precio aparece una sola vez, abajo, al elegir.
 - **La página de gracias** abre con el botón del grupo de WhatsApp, y los pasos que siguen
   se renumeran solos según haya enlace de grupo cargado o no.
 

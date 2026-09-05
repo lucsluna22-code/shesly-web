@@ -1,0 +1,68 @@
+---
+layout: layouts/base.njk
+permalink: /pago-exitoso/index.html
+noindex: true
+tituloPagina: "Pago confirmado | Shesly Gutiérrez"
+descripcionPagina: "Tu lugar está reservado. Esto es lo que sigue."
+---
+{% import "partials/iconos.njk" as ico %}
+{% set wa = "https://wa.me/" + site.contacto.whatsapp + "?text=" + ("Hola Shesly! Ya hice el pago y quiero confirmar mi lugar ✨" | urlencode) %}
+{% set grupo = site.extras.whatsapp_grupo %}
+
+<section class="min-h-screen px-6 bg-page pt-32 pb-24">
+  <div class="max-w-2xl mx-auto space-y-12">
+
+    <header class="text-center space-y-6">
+      <div class="w-20 h-20 mx-auto rounded-full bg-brand/10 flex items-center justify-center">
+        <svg class="w-9 h-9 text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+      </div>
+      <h1 class="text-4xl md:text-6xl font-serif text-stone-900 leading-[1.05]">Tu lugar está <span class="text-gradient italic">reservado</span></h1>
+      <p class="text-lg text-stone-500 font-light">Recibí tu pago. Ahora te cuento exactamente qué sigue, para que no te quedes esperando sin saber.</p>
+    </header>
+
+    {% if grupo %}
+    <div class="rounded-[2rem] md:rounded-[2.5rem] bg-stone-900 text-white shadow-2xl p-8 md:p-11 text-center space-y-6">
+      <span class="inline-block px-4 py-1.5 rounded-full bg-brand text-white text-[9px] font-black uppercase tracking-[0.3em]">Primer paso</span>
+      <h2 class="font-serif text-3xl md:text-4xl leading-tight">Entra al grupo de WhatsApp</h2>
+      <p class="text-base text-white/70 font-light leading-relaxed max-w-md mx-auto">Ahí se coordinan los horarios, se comparte el material y se resuelven las dudas entre una sesión y la otra. Hazlo ahora, así no se te pasa.</p>
+      <a href="{{ grupo }}" target="_blank" rel="noopener noreferrer" data-evento="grupo_whatsapp"
+         class="inline-flex items-center gap-3 px-9 py-5 bg-[#25D366] text-white rounded-full font-bold tracking-[0.2em] text-[10px] uppercase hover:bg-[#1ebe5d] transition-all transform hover:-translate-y-0.5 shadow-xl">
+        {{ ico.whatsapp(20, "w-5 h-5") }} Unirme al grupo
+      </a>
+      <p class="text-xs text-white/40 font-light">Te sumo yo misma en cuanto vea tu solicitud.</p>
+    </div>
+    {% endif %}
+
+    <ol class="space-y-4">
+      {% set pasos = [
+        { t: "Revisa tu correo", d: "En los próximos minutos te llega el mensaje de bienvenida con el PDF de la hoja de ruta, el contexto de la formación y los términos y condiciones. Si no aparece, revisa en spam o promociones." },
+        { t: "Descarga el material", d: "En ese mismo correo te comparto la carpeta de Drive con el manual y las hojas para imprimir. Tenlas listas antes de la primera sesión: se usan desde el primer ejercicio." },
+        { t: "Nos vemos en la sesión", d: "El enlace de Zoom se envía por el grupo de WhatsApp el día del encuentro." }
+      ] %}
+      {% if not grupo %}
+      {% set pasos = [{ t: "Entra al grupo de WhatsApp", d: "El enlace al grupo del curso te llega en el correo de bienvenida. Ahí se coordinan los horarios y se resuelven las dudas entre una sesión y la otra." }].concat(pasos) %}
+      {% endif %}
+      {% for p in pasos %}
+      <li class="glass-card rounded-[1.75rem] border-white/80 shadow-lg p-6 md:p-8 flex items-start gap-5">
+        <span class="mt-0.5 shrink-0 w-8 h-8 rounded-full bg-brand/10 text-brand-dark flex items-center justify-center text-xs font-black">{{ loop.index + 1 if grupo else loop.index }}</span>
+        <div class="space-y-1.5">
+          <h2 class="font-serif text-xl md:text-2xl text-stone-900 leading-tight">{{ p.t }}</h2>
+          <p class="text-sm md:text-base text-stone-500 font-light leading-relaxed">{{ p.d }}</p>
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+
+    <div class="glass-card rounded-[2rem] border-white/80 shadow-lg p-7 md:p-9 text-center space-y-5">
+      <p class="text-base text-stone-600 font-light">¿No te llegó nada en 15 minutos, o algo no cierra? Escríbeme y lo resolvemos.</p>
+      <a href="{{ wa }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-8 py-4 bg-white border border-stone-200 text-stone-700 rounded-full font-bold tracking-[0.2em] text-[10px] uppercase hover:bg-stone-50 transition-all">
+        {{ ico.whatsapp(18, "w-4 h-4 text-[#25D366]") }} Escribirme por WhatsApp
+      </a>
+    </div>
+
+    <p class="text-center">
+      <a href="/" class="text-[10px] font-black uppercase tracking-[0.3em] text-stone-400 hover:text-stone-900 transition-colors">Volver al inicio</a>
+    </p>
+
+  </div>
+</section>

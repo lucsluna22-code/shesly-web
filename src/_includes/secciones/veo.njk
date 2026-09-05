@@ -1,0 +1,47 @@
+{% set v = home.veo %}
+
+<section id="formacion" class="relative pt-16 pb-16 md:pt-20 md:pb-20 lg:pt-24 lg:pb-28 overflow-hidden bg-page">
+  <div class="absolute top-1/4 right-0 w-[520px] h-[520px] bg-brand/10 rounded-full blur-[140px]"></div>
+  <div class="absolute bottom-0 left-0 w-[420px] h-[420px] bg-white/50 rounded-full blur-[130px]"></div>
+
+  <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+
+    <div class="max-w-3xl space-y-5 md:space-y-7 mb-12 md:mb-20">
+      <span class="inline-block text-[10px] md:text-xs font-black uppercase tracking-[0.5em] text-brand-light">{{ v.etiqueta }}</span>
+      <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif text-stone-900 leading-[1.02] tracking-tight">{{ v.titulo_linea1 }} <span class="text-gradient italic">{{ v.titulo_destacado }}</span></h2>
+      <p class="text-base md:text-xl text-stone-500 font-light leading-relaxed">{{ v.bajada }}</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-7 items-start">
+      {% for c in v.capacidades %}
+      <article class="glass-card rounded-[2rem] md:rounded-[2.5rem] border-white/80 shadow-lg p-7 md:p-9 h-full reveal-on-scroll" style="transition-delay: {{ loop.index0 * 90 }}ms;">
+        <span class="inline-block px-3 py-1 rounded-full bg-brand/10 text-brand-dark text-[10px] font-black tracking-[0.2em] mb-6">{{ c.numero }}</span>
+        <h3 class="font-serif text-2xl md:text-3xl text-stone-900 leading-tight mb-3">{{ c.titulo }}</h3>
+        <p class="text-sm md:text-base text-stone-500 font-light leading-relaxed">{{ c.texto }}</p>
+      </article>
+      {% endfor %}
+    </div>
+
+    {% if v.incluye %}
+    <div class="mt-6 md:mt-8 rounded-[2rem] md:rounded-[3rem] bg-stone-900 text-white shadow-xl p-8 md:p-12 lg:p-14 reveal-on-scroll">
+      <div class="flex flex-col lg:flex-row gap-10 lg:gap-16">
+        <div class="lg:w-1/3 shrink-0">
+          <h3 class="font-serif text-3xl md:text-4xl leading-tight">{{ v.incluye_titulo }}</h3>
+          {% if v.boton %}
+          <a href="{{ v.boton_url }}" class="mt-8 inline-block text-center px-8 py-4 rounded-full bg-white text-stone-900 font-bold tracking-[0.2em] text-[10px] uppercase hover:bg-brand hover:text-white transition-all">{{ v.boton }}</a>
+          {% endif %}
+        </div>
+        <ul class="flex-1 grid sm:grid-cols-2 gap-x-10 gap-y-4">
+          {% for i in v.incluye %}
+          <li class="flex items-start gap-3 text-base md:text-lg text-white/75 font-light leading-relaxed">
+            <span class="mt-2.5 w-1.5 h-1.5 rounded-full bg-brand-light shrink-0"></span>
+            <span>{{ i }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    {% endif %}
+
+  </div>
+</section>

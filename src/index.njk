@@ -1,0 +1,10 @@
+---
+layout: layouts/base.njk
+permalink: /index.html
+mostrarHero: true
+---
+{% for s in home.secciones %}
+  {% if s.visible %}
+    {% include "secciones/" + s.id + ".njk" %}
+  {% endif %}
+{% endfor %}

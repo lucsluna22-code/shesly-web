@@ -1,0 +1,501 @@
+# ═══════════════════════════════════════════════════════════════
+#  Panel de edición (Sveltia CMS)
+#
+#  Cómo entra Shesly: sheslygutierrez.com/admin → "Sign in with GitHub".
+#  El login lo resuelve Netlify (proveedor OAuth de GitHub instalado
+#  en Project configuration → Access & security → OAuth). Por eso NO
+#  hace falta "base_url": si no está, Sveltia usa Netlify por defecto.
+#
+#  Requisito: el sitio tiene que estar publicado desde este mismo
+#  repositorio (Netlify → Deploys desde Git), no arrastrando el ZIP.
+#
+#  Si algún día el sitio deja de estar en Netlify, se reemplaza el
+#  login por un worker propio y se agrega acá:
+#     base_url: https://TU-WORKER.workers.dev
+#  (proyecto sveltia/sveltia-cms-auth en Cloudflare Workers)
+# ═══════════════════════════════════════════════════════════════
+
+backend:
+  name: github
+  repo: lucsluna22-code/shesly-web
+  branch: main
+
+publish_mode: simple
+media_folder: "src/assets/img"
+public_folder: "/assets/img"
+locale: "es"
+site_url: "https://sheslygutierrez.com"
+logo_url: "/favicon.svg"
+
+collections:
+  # ──────────────────────────────────────────────
+  - name: "diseno"
+    label: "🎨 Diseño"
+    files:
+      - name: "theme"
+        label: "Colores y tipografías"
+        file: "src/_data/theme.yml"
+        format: "yaml"
+        description: "Cambiá los colores, las tipografías y los efectos de toda la web."
+        fields:
+          - label: "Colores"
+            name: "colores"
+            widget: "object"
+            fields:
+              - { label: "Fondo general", name: "fondo", widget: "color", default: "#f0f7ff" }
+              - { label: "Texto principal", name: "texto", widget: "color", default: "#1a1a1a" }
+              - { label: "Color de marca", name: "marca", widget: "color", default: "#0ea5e9" }
+              - { label: "Marca — variante clara", name: "marca_clara", widget: "color", default: "#38bdf8" }
+              - { label: "Marca — variante oscura (hover)", name: "marca_oscura", widget: "color", default: "#0369a1" }
+              - { label: "Acento rosado", name: "acento", widget: "color", default: "#ff8aab" }
+              - { label: "Degradado — color inicial", name: "gradiente_desde", widget: "color", default: "#0ea5e9" }
+              - { label: "Degradado — color final", name: "gradiente_hasta", widget: "color", default: "#a288ff" }
+          - label: "Tipografías"
+            name: "tipografias"
+            widget: "object"
+            fields:
+              - label: "Títulos"
+                name: "titulos"
+                widget: "select"
+                options: ["Playfair Display", "Georgia"]
+                default: "Playfair Display"
+              - label: "Textos"
+                name: "cuerpo"
+                widget: "select"
+                options: ["Inter", "system-ui"]
+                default: "Inter"
+          - label: "Efectos"
+            name: "efectos"
+            widget: "object"
+            fields:
+              - { label: "Textura de grano", name: "textura_ruido", widget: "boolean", default: true }
+              - { label: "Ondas animadas del encabezado", name: "animacion_hero", widget: "boolean", default: true }
+              - { label: "Intensidad de las ondas (0 a 1)", name: "intensidad_hero", widget: "number", value_type: "float", min: 0, max: 1, step: 0.05, default: 0.6 }
+          - { label: "CSS personalizado (avanzado)", name: "css_personalizado", widget: "text", required: false }
+
+  # ──────────────────────────────────────────────
+  - name: "inicio"
+    label: "🏠 Página de inicio"
+    files:
+      - name: "home"
+        label: "Contenido de la portada"
+        file: "src/_data/home.yml"
+        format: "yaml"
+        fields:
+          - label: "Secciones (arrastrá para reordenar)"
+            name: "secciones"
+            widget: "list"
+            fields:
+              - label: "Sección"
+                name: "id"
+                widget: "select"
+                options:
+                  - { label: "Encabezado (hero)", value: "hero" }
+                  - { label: "Video de una clase real", value: "prueba" }
+                  - { label: "Banner del programa completo", value: "banner" }
+                  - { label: "Si te pasa esto (para quién es)", value: "si-te-pasa" }
+                  - { label: "Testimonios", value: "testimonios" }
+                  - { label: "La formación VEO (qué desarrollás)", value: "veo" }
+                  - { label: "Formaciones y precios", value: "formaciones" }
+                  - { label: "Sobre mí", value: "sobre-mi" }
+                  - { label: "Entrevistas de YouTube", value: "entrevistas" }
+                  - { label: "Preguntas frecuentes", value: "preguntas" }
+                  - { label: "Pagar o reservar", value: "cierre" }
+                  - { label: "Formulario de contacto", value: "contacto" }
+              - { label: "Visible", name: "visible", widget: "boolean", default: true }
+
+          - label: "Encabezado"
+            name: "hero"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Etiqueta superior", name: "etiqueta", widget: "string" }
+              - { label: "Título — línea 1", name: "titulo_linea1", widget: "string" }
+              - { label: "Título — palabras destacadas", name: "titulo_destacado", widget: "string" }
+              - { label: "Título — línea 2", name: "titulo_linea2", widget: "string" }
+              - { label: "Subtítulo (debajo del título)", name: "subtitulo", widget: "string", required: false }
+              - { label: "Bajada", name: "bajada", widget: "string" }
+              - { label: "Bajada — parte en negrita", name: "bajada_destacado", widget: "string" }
+              - { label: "Bajada — cierre", name: "bajada_final", widget: "string", required: false }
+              - { label: "Texto del botón", name: "boton_texto", widget: "string" }
+              - { label: "Enlace del botón", name: "boton_url", widget: "string" }
+              - { label: "Segundo botón — texto", name: "boton2_texto", widget: "string", required: false }
+              - { label: "Segundo botón — enlace", name: "boton2_url", widget: "string", required: false }
+              - { label: "Foto", name: "imagen", widget: "image" }
+              - { label: "Descripción de la foto (accesibilidad)", name: "imagen_alt", widget: "string" }
+              - { label: "Tarjeta — etiqueta", name: "tarjeta_etiqueta", widget: "string" }
+              - { label: "Tarjeta — frase", name: "tarjeta_frase", widget: "string" }
+
+          - label: "Sobre mí"
+            name: "sobre_mi"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Foto", name: "imagen", widget: "image" }
+              - { label: "Descripción de la foto", name: "imagen_alt", widget: "string" }
+              - { label: "Etiqueta superior", name: "etiqueta", widget: "string" }
+              - { label: "Título — línea 1", name: "titulo_linea1", widget: "string" }
+              - { label: "Título — palabra destacada", name: "titulo_destacado", widget: "string" }
+              - { label: "Título — línea 2", name: "titulo_linea2", widget: "string" }
+              - { label: "Título — línea 3", name: "titulo_linea3", widget: "string" }
+              - { label: "Frase en cursiva", name: "frase", widget: "string" }
+              - { label: "Párrafos", name: "parrafos", widget: "list", field: { label: "Párrafo", name: "texto", widget: "text" } }
+              - label: "Insignias flotantes (máximo 3)"
+                name: "insignias"
+                widget: "list"
+                max: 3
+                fields:
+                  - { label: "Emoji", name: "icono", widget: "string" }
+                  - { label: "Título", name: "titulo", widget: "string" }
+                  - { label: "Subtítulo", name: "subtitulo", widget: "string" }
+                  - label: "Color"
+                    name: "color"
+                    widget: "select"
+                    options: ["purple", "blue", "rose", "emerald", "amber"]
+
+          - label: "Sección Formaciones"
+            name: "formaciones"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Etiqueta superior", name: "etiqueta", widget: "string" }
+              - { label: "Título — línea 1", name: "titulo_linea1", widget: "string" }
+              - { label: "Título — palabra destacada", name: "titulo_destacado", widget: "string" }
+              - { label: "Bajada", name: "bajada", widget: "string" }
+              - { label: "Texto del enlace en cada tarjeta", name: "boton_tarjeta", widget: "string" }
+
+          - label: "Video de una clase real"
+            name: "prueba"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Etiqueta superior", name: "etiqueta", widget: "string" }
+              - { label: "Título — línea 1", name: "titulo_linea1", widget: "string" }
+              - { label: "Título — palabras destacadas", name: "titulo_destacado", widget: "string" }
+              - { label: "Título — línea 2", name: "titulo_linea2", widget: "string" }
+              - { label: "Bajada", name: "bajada", widget: "text" }
+              - { label: "Video (mp4, menos de 10 MB)", name: "video", widget: "file", required: false }
+              - { label: "Imagen de portada del video", name: "video_poster", widget: "image", required: false }
+              - { label: "Texto sobre el video", name: "video_boton", widget: "string" }
+              - label: "Tres datos debajo del video"
+                name: "datos"
+                widget: "list"
+                max: 3
+                fields:
+                  - { label: "Título", name: "titulo", widget: "string" }
+                  - { label: "Texto", name: "texto", widget: "text" }
+
+          - label: "Si te pasa esto (para quién es)"
+            name: "si_te_pasa"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Etiqueta superior", name: "etiqueta", widget: "string" }
+              - { label: "Título — línea 1", name: "titulo_linea1", widget: "string" }
+              - { label: "Título — palabra destacada", name: "titulo_destacado", widget: "string" }
+              - { label: "Título — línea 2", name: "titulo_linea2", widget: "string" }
+              - { label: "Frases", name: "items", widget: "list", field: { label: "Frase", name: "texto", widget: "text" } }
+              - { label: "Frase de cierre", name: "cierre_frase", widget: "text", required: false }
+              - { label: "Autor de la frase", name: "cierre_autor", widget: "string", required: false }
+
+          - label: "Testimonios"
+            name: "testimonios"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Etiqueta superior", name: "etiqueta", widget: "string" }
+              - { label: "Título — línea 1", name: "titulo_linea1", widget: "string" }
+              - { label: "Título — palabras destacadas", name: "titulo_destacado", widget: "string" }
+              - { label: "Bajada", name: "bajada", widget: "text" }
+              - label: "Videos de testimonios (se deslizan de costado)"
+                name: "videos"
+                widget: "list"
+                required: false
+                summary: "{{nombre}} — {{detalle}}"
+                fields:
+                  - { label: "Video (mp4 vertical, menos de 3 MB)", name: "video", widget: "file" }
+                  - { label: "Portada del video", name: "poster", widget: "image", required: false }
+                  - { label: "Nombre", name: "nombre", widget: "string" }
+                  - { label: "Detalle", name: "detalle", widget: "string", required: false }
+              - { label: "Texto sobre los videos", name: "video_boton", widget: "string", required: false }
+              - { label: "Título de los mensajes escritos", name: "mensajes_titulo", widget: "string", required: false }
+              - label: "Testimonios escritos"
+                name: "lista"
+                widget: "list"
+                summary: "{{nombre}}"
+                fields:
+                  - { label: "Testimonio", name: "texto", widget: "text" }
+                  - { label: "Nombre", name: "nombre", widget: "string" }
+                  - { label: "Formación y de dónde es", name: "detalle", widget: "string" }
+                  - label: "Por dónde llegó"
+                    name: "canal"
+                    widget: "select"
+                    required: false
+                    options:
+                      - { label: "WhatsApp", value: "whatsapp" }
+                      - { label: "Instagram", value: "instagram" }
+                  - { label: "Captura de pantalla del mensaje", name: "captura", widget: "image", required: false, hint: "Si la cargás, se muestra la captura real en vez del texto." }
+                  - { label: "Foto de la persona (opcional)", name: "foto", widget: "image", required: false }
+
+          - label: "La formación VEO"
+            name: "veo"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Etiqueta superior", name: "etiqueta", widget: "string" }
+              - { label: "Título — línea 1", name: "titulo_linea1", widget: "string" }
+              - { label: "Título — palabra destacada", name: "titulo_destacado", widget: "string" }
+              - { label: "Bajada", name: "bajada", widget: "text" }
+              - label: "Capacidades"
+                name: "capacidades"
+                widget: "list"
+                summary: "{{numero}} · {{titulo}}"
+                fields:
+                  - { label: "Número", name: "numero", widget: "string" }
+                  - { label: "Título", name: "titulo", widget: "string" }
+                  - { label: "Texto", name: "texto", widget: "text" }
+              - { label: "Título del bloque oscuro", name: "incluye_titulo", widget: "string" }
+              - { label: "Qué incluye", name: "incluye", widget: "list", field: { label: "Punto", name: "punto", widget: "text" } }
+              - { label: "Texto del botón", name: "boton", widget: "string", required: false }
+              - { label: "Enlace del botón", name: "boton_url", widget: "string", required: false }
+
+          - label: "Banner del programa completo"
+            name: "banner"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Imagen (la portada)", name: "imagen", widget: "image" }
+              - { label: "Descripción de la imagen", name: "imagen_alt", widget: "string", required: false }
+              - { label: "A dónde lleva al hacer clic", name: "url", widget: "string" }
+              - { label: "Etiqueta superior", name: "etiqueta", widget: "string", required: false }
+              - { label: "Título", name: "titulo", widget: "string" }
+              - { label: "Texto", name: "texto", widget: "text" }
+              - { label: "Texto del botón", name: "boton", widget: "string" }
+
+          - label: "Entrevistas de YouTube"
+            name: "entrevistas"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Etiqueta superior", name: "etiqueta", widget: "string" }
+              - { label: "Título — línea 1", name: "titulo_linea1", widget: "string" }
+              - { label: "Título — palabras destacadas", name: "titulo_destacado", widget: "string" }
+              - { label: "Bajada", name: "bajada", widget: "text", required: false }
+              - label: "Videos"
+                name: "lista"
+                widget: "list"
+                summary: "{{titulo}}"
+                fields:
+                  - { label: "ID del video de YouTube", name: "id", widget: "string", hint: "Lo que va después de youtu.be/ o de watch?v=. Ej: GTYS3lUY7GA" }
+                  - { label: "Título", name: "titulo", widget: "string" }
+                  - { label: "Etiqueta", name: "detalle", widget: "string", required: false, hint: "Ej: Entrevista, En vivo, Podcast" }
+                  - { label: "Enlace completo", name: "url", widget: "string" }
+
+          - label: "Preguntas frecuentes"
+            name: "preguntas"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Etiqueta superior", name: "etiqueta", widget: "string" }
+              - { label: "Título — línea 1", name: "titulo_linea1", widget: "string" }
+              - { label: "Título — palabra destacada", name: "titulo_destacado", widget: "string" }
+              - label: "Preguntas"
+                name: "lista"
+                widget: "list"
+                summary: "{{pregunta}}"
+                fields:
+                  - { label: "Pregunta", name: "pregunta", widget: "string" }
+                  - { label: "Respuesta", name: "respuesta", widget: "text" }
+
+          - label: "Pagar o reservar"
+            name: "cierre"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Etiqueta superior", name: "etiqueta", widget: "string" }
+              - { label: "Título — línea 1", name: "titulo_linea1", widget: "string" }
+              - { label: "Título — palabra destacada", name: "titulo_destacado", widget: "string" }
+              - { label: "Bajada", name: "bajada", widget: "text" }
+              - label: "Opciones (hasta 3)"
+                name: "opciones"
+                widget: "list"
+                max: 3
+                summary: "{{titulo}} — {{precio}}"
+                fields:
+                  - { label: "Título", name: "titulo", widget: "string" }
+                  - { label: "Precio", name: "precio", widget: "string" }
+                  - { label: "Nota debajo del precio", name: "precio_nota", widget: "string", required: false }
+                  - { label: "Detalle", name: "detalle", widget: "text" }
+                  - { label: "Texto del botón", name: "boton", widget: "string" }
+                  - { label: "Enlace de pago de Stripe", name: "url", widget: "string", required: false, hint: "Si lo dejás vacío, el botón lleva a WhatsApp." }
+                  - { label: "Destacar esta opción", name: "destacado", widget: "boolean", default: false }
+              - { label: "Nota al pie", name: "nota", widget: "text", required: false }
+
+          - label: "Sección Contacto"
+            name: "contacto"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Etiqueta superior", name: "etiqueta", widget: "string" }
+              - { label: "Título", name: "titulo", widget: "string" }
+              - { label: "Título — palabra destacada", name: "titulo_destacado", widget: "string" }
+              - { label: "Bajada", name: "bajada", widget: "string" }
+              - { label: "Texto del botón", name: "boton", widget: "string" }
+
+  # ──────────────────────────────────────────────
+  - name: "formaciones"
+    label: "✨ Formaciones"
+    label_singular: "Formación"
+    folder: "src/formaciones"
+    create: true
+    slug: "{{slug}}"
+    format: "yaml-frontmatter"
+    summary: "{{icono}} {{titulo}}"
+    sortable_fields: ["orden", "titulo"]
+    fields:
+      - { label: "Título (tarjeta)", name: "titulo", widget: "string" }
+      - { label: "Título largo (página interna)", name: "titulo_largo", widget: "string", required: false }
+      - { label: "Subtítulo", name: "subtitulo", widget: "string" }
+      - { label: "Slug (parte final de la URL)", name: "slug", widget: "string", hint: "Sin espacios ni acentos. Ej: barras-access" }
+      - { label: "Orden", name: "orden", widget: "number", value_type: "int", default: 1 }
+      - { label: "Visible en la web", name: "visible", widget: "boolean", default: true }
+      - { label: "Emoji", name: "icono", widget: "string" }
+      - label: "Color de la tarjeta"
+        name: "color"
+        widget: "select"
+        options: ["purple", "blue", "rose", "emerald", "amber"]
+      - { label: "Descripción corta (tarjeta)", name: "descripcion_corta", widget: "text" }
+      - { label: "Descripción larga (página interna)", name: "descripcion_larga", widget: "text" }
+      - { label: "Duración", name: "duracion", widget: "string" }
+      - { label: "Destacar en la portada", name: "destacada", widget: "boolean", default: false }
+      - { label: "La promesa en una frase (tarjeta)", name: "promesa", widget: "text", required: false }
+      - { label: "¿A quién no le sirve?", name: "no_es_para", widget: "text", required: false }
+      - { label: "Modalidad (tarjeta)", name: "modalidad", widget: "string", required: false, hint: "Ej: Online, en vivo por Zoom" }
+      - { label: "Duración corta (tarjeta)", name: "duracion_corta", widget: "string", required: false }
+      - { label: "Precio principal", name: "precio_principal", widget: "string", required: false }
+      - { label: "Nota debajo del precio", name: "precio_nota", widget: "string", required: false }
+      - { label: "Precio alternativo", name: "precio_alternativo", widget: "string", required: false }
+      - { label: "Botón 1 — texto", name: "boton_texto", widget: "string", required: false }
+      - { label: "Botón 1 — enlace de pago de Stripe", name: "stripe_url", widget: "string", required: false, hint: "Vacío = el botón lleva a WhatsApp." }
+      - { label: "Botón 2 — texto", name: "boton2_texto", widget: "string", required: false }
+      - { label: "Botón 2 — enlace de pago de Stripe", name: "stripe_url_2", widget: "string", required: false }
+      - { label: "Temario", name: "temario", widget: "list", required: false, field: { label: "Punto", name: "punto", widget: "string" } }
+      - { label: "Imágenes", name: "imagenes", widget: "list", required: false, field: { label: "Imagen", name: "imagen", widget: "image" } }
+      - label: "Inscripción"
+        name: "evento"
+        widget: "object"
+        fields:
+          - { label: "Nombre del formato", name: "nombre", widget: "string" }
+          - { label: "Etiqueta de la tarjeta", name: "etiqueta", widget: "string", required: false, hint: "Ej: Próximo taller, Acceso inmediato" }
+          - { label: "Precio", name: "precio", widget: "string", required: false }
+          - { label: "Descripción", name: "descripcion", widget: "text" }
+          - { label: "¿Es online?", name: "online", widget: "boolean", default: true }
+          - { label: "Fecha (texto libre)", name: "fecha", widget: "string", required: false }
+          - { label: "Ubicación", name: "ubicacion", widget: "string", required: false }
+          - { label: "Mostrar como 'Próximamente'", name: "proximamente", widget: "boolean", default: false }
+          - { label: "Texto del botón", name: "etiqueta_boton", widget: "string", default: "Reservar mi lugar ahora" }
+          - { label: "Nota bajo el botón", name: "nota_final", widget: "string", required: false }
+      - { label: "Mensaje de WhatsApp precargado", name: "mensaje_whatsapp", widget: "text" }
+      - { label: "Contenido extra (opcional)", name: "body", widget: "markdown", required: false }
+
+  # ──────────────────────────────────────────────
+  - name: "configuracion"
+    label: "⚙️ Configuración del sitio"
+    files:
+      - name: "site"
+        label: "Datos generales, contacto y SEO"
+        file: "src/_data/site.yml"
+        format: "yaml"
+        fields:
+          - { label: "Nombre", name: "nombre", widget: "string" }
+          - { label: "Logo — línea 1", name: "logo_linea1", widget: "string" }
+          - { label: "Logo — línea 2", name: "logo_linea2", widget: "string" }
+          - { label: "URL del sitio", name: "url", widget: "string", hint: "Con https:// y sin barra final" }
+          - { label: "Idioma", name: "idioma", widget: "hidden", default: "es" }
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Título en Google", name: "titulo", widget: "string" }
+              - { label: "Descripción en Google", name: "descripcion", widget: "text" }
+              - { label: "Palabras clave", name: "keywords", widget: "text" }
+              - { label: "Título al compartir", name: "og_titulo", widget: "string" }
+              - { label: "Descripción al compartir", name: "og_descripcion", widget: "text" }
+              - { label: "Imagen al compartir", name: "og_imagen", widget: "image" }
+          - label: "Contacto"
+            name: "contacto"
+            widget: "object"
+            fields:
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Teléfono (como se muestra)", name: "telefono_texto", widget: "string" }
+              - { label: "WhatsApp (solo números con código de país)", name: "whatsapp", widget: "string" }
+              - { label: "Ubicación", name: "ubicacion", widget: "string" }
+          - label: "Redes sociales"
+            name: "redes"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Instagram", name: "instagram", widget: "string", required: false }
+              - { label: "Facebook", name: "facebook", widget: "string", required: false }
+              - { label: "YouTube", name: "youtube", widget: "string", required: false }
+              - { label: "TikTok", name: "tiktok", widget: "string", required: false }
+          - label: "Menú"
+            name: "navegacion"
+            widget: "list"
+            fields:
+              - { label: "Texto", name: "texto", widget: "string" }
+              - { label: "Enlace", name: "url", widget: "string" }
+          - label: "Botón del menú"
+            name: "boton_nav"
+            widget: "object"
+            fields:
+              - { label: "Texto", name: "texto", widget: "string" }
+              - { label: "Tipo", name: "tipo", widget: "select", options: ["whatsapp", "enlace"] }
+              - { label: "Enlace (si es tipo enlace)", name: "url", widget: "string", required: false }
+          - label: "Pie de página"
+            name: "pie"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Descripción", name: "descripcion", widget: "text" }
+              - { label: "Copyright", name: "copyright", widget: "string" }
+              - { label: "Crédito — texto", name: "credito_texto", widget: "string" }
+              - { label: "Crédito — nombre", name: "credito_nombre", widget: "string" }
+              - { label: "Crédito — enlace", name: "credito_url", widget: "string" }
+              - label: "Enlaces legales"
+                name: "legales"
+                widget: "list"
+                fields:
+                  - { label: "Texto", name: "texto", widget: "string" }
+                  - { label: "Enlace", name: "url", widget: "string" }
+          - label: "Extras"
+            name: "extras"
+            widget: "object"
+            fields:
+              - { label: "Botón flotante de WhatsApp", name: "boton_whatsapp_flotante", widget: "boolean", default: true }
+              - { label: "Enlace del grupo de WhatsApp del curso", name: "whatsapp_grupo", widget: "string", required: false, hint: "Se muestra apenas alguien termina de pagar. Conviene renovarlo cada vez que arranca un grupo nuevo." }
+              - { label: "Mensaje de WhatsApp por defecto", name: "mensaje_whatsapp_general", widget: "text" }
+          - label: "Analítica"
+            name: "analytics"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Google Analytics (G-XXXX)", name: "google_analytics_id", widget: "string", required: false }
+              - { label: "Meta Pixel ID", name: "meta_pixel_id", widget: "string", required: false }
+              - { label: "Google Search Console", name: "google_site_verification", widget: "string", required: false }
+
+  # ──────────────────────────────────────────────
+  - name: "paginas"
+    label: "📄 Páginas legales"
+    label_singular: "Página"
+    folder: "src/paginas"
+    create: true
+    format: "yaml-frontmatter"
+    fields:
+      - { label: "Título", name: "titulo", widget: "string" }
+      - { label: "Título para Google", name: "tituloPagina", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "URL", name: "permalink", widget: "string", hint: "Ej: /privacidad/" }
+      - { label: "Plantilla", name: "layout", widget: "hidden", default: "layouts/pagina.njk" }
+      - { label: "Contenido", name: "body", widget: "markdown" }

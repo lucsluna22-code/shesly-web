@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="{{ site.idioma }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>{{ tituloPagina or site.seo.titulo }}</title>
+  <meta name="description" content="{{ descripcionPagina or site.seo.descripcion }}">
+  <meta name="keywords" content="{{ site.seo.keywords }}">
+  <meta name="author" content="{{ site.nombre }}">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  {% if noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
+  {% if site.analytics.google_site_verification %}
+  <meta name="google-site-verification" content="{{ site.analytics.google_site_verification }}">
+  {% endif %}
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:site_name" content="{{ site.nombre }}">
+  <meta property="og:title" content="{{ tituloPagina or site.seo.og_titulo }}">
+  <meta property="og:description" content="{{ descripcionPagina or site.seo.og_descripcion }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:image" content="{{ site.url }}{{ imagenPagina or site.seo.og_imagen }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{{ tituloPagina or site.seo.og_titulo }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ tituloPagina or site.seo.og_titulo }}">
+  <meta name="twitter:description" content="{{ descripcionPagina or site.seo.og_descripcion }}">
+  <meta name="twitter:image" content="{{ site.url }}{{ imagenPagina or site.seo.og_imagen }}">
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="{{ theme.colores.fondo }}">
+
+  <script>document.documentElement.className += " js";</script>
+
+  <link rel="preload" as="style" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  <style>
+    :root {
+      --c-page: {{ theme.colores.fondo | rgbChannels }};
+      --c-ink: {{ theme.colores.texto | rgbChannels }};
+      --c-brand: {{ theme.colores.marca | rgbChannels }};
+      --c-brand-light: {{ theme.colores.marca_clara | rgbChannels }};
+      --c-brand-dark: {{ theme.colores.marca_oscura | rgbChannels }};
+      --c-accent: {{ theme.colores.acento | rgbChannels }};
+      --c-grad-from: {{ theme.colores.gradiente_desde }};
+      --c-grad-to: {{ theme.colores.gradiente_hasta }};
+      --font-heading: "{{ theme.tipografias.titulos }}";
+      --font-body: "{{ theme.tipografias.cuerpo }}";
+      --hero-opacity: {{ theme.efectos.intensidad_hero }};
+    }
+    {{ theme.css_personalizado | safe }}
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "{{ site.nombre }}",
+    "description": "{{ site.seo.descripcion }}",
+    "url": "{{ site.url }}",
+    "image": "{{ site.url }}{{ site.seo.og_imagen }}",
+    "email": "{{ site.contacto.email }}",
+    "telephone": "{{ site.contacto.telefono_texto }}",
+    "address": { "@type": "PostalAddress", "addressLocality": "{{ site.contacto.ubicacion }}" },
+    "sameAs": [{% if site.redes.instagram %}"{{ site.redes.instagram }}"{% endif %}{% if site.redes.facebook %}, "{{ site.redes.facebook }}"{% endif %}]
+  }
+  </script>
+
+  {% if site.analytics.google_analytics_id %}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.analytics.google_analytics_id }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ site.analytics.google_analytics_id }}');
+  </script>
+  {% endif %}
+  {% if site.analytics.meta_pixel_id %}
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '{{ site.analytics.meta_pixel_id }}'); fbq('track', 'PageView');
+  </script>
+  {% endif %}
+</head>
+<body class="{% if theme.efectos.textura_ruido %}bg-noise{% endif %}">
+  <a href="#contenido" class="sr-only focus:not-sr-only focus:absolute focus:z-[200] focus:top-4 focus:left-4 focus:bg-white focus:px-5 focus:py-3 focus:rounded-full focus:shadow-lg text-xs font-bold uppercase tracking-widest">Saltar al contenido</a>
+
+  <div class="min-h-screen bg-page">
+    {% include "partials/nav.njk" %}
+    <main id="contenido" class="relative">
+      {{ content | safe }}
+    </main>
+    {% include "partials/footer.njk" %}
+  </div>
+
+  {% if site.extras.boton_whatsapp_flotante %}
+    {% include "partials/whatsapp-flotante.njk" %}
+  {% endif %}
+
+  <script src="/assets/js/ui.js" defer></script>
+  {% if mostrarHero and theme.efectos.animacion_hero %}
+  <script src="/assets/js/hero-canvas.js" defer></script>
+  {% endif %}
+</body>
+</html>

@@ -1,0 +1,12 @@
+# Enlaces viejos del sitio en Firebase
+/formacion/:slug              /formaciones/:slug/    301
+
+# Nombre nuevo de la formación
+/formaciones/vision-extra-ocular    /formaciones/vision-extraocular/    301
+/formaciones/vision-extra-ocular/*  /formaciones/vision-extraocular/    301
+
+# Formaciones que hoy no se ofrecen: a la portada en vez de un 404
+/formaciones/intuicion        /#formacion            301
+/formaciones/intuicion/*      /#formacion            301
+/formaciones/barras-access    /#formacion            301
+/formaciones/barras-access/*  /#formacion            301

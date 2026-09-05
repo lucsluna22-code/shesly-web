@@ -1,0 +1,31 @@
+{% set s = home.si_te_pasa %}
+
+<section id="para-quien" class="relative pt-16 pb-16 md:pt-20 md:pb-20 lg:pt-24 lg:pb-24 overflow-hidden bg-page">
+  <div class="absolute top-1/3 right-0 w-[420px] h-[420px] bg-white/40 rounded-full blur-[130px]"></div>
+
+  <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+    <div class="flex flex-col lg:flex-row gap-12 lg:gap-24 items-start">
+
+      <div class="flex-1 space-y-5 md:space-y-7 lg:sticky lg:top-32">
+        <span class="inline-block text-[10px] md:text-xs font-black uppercase tracking-[0.5em] text-brand-light">{{ s.etiqueta }}</span>
+        <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif text-stone-900 leading-[1.02] tracking-tight">{{ s.titulo_linea1 }} <br><span class="text-gradient italic">{{ s.titulo_destacado }}</span> {{ s.titulo_linea2 }}</h2>
+        {% if s.cierre_frase %}
+        <div class="pt-4 md:pt-8 max-w-md">
+          <p class="text-lg md:text-2xl italic font-serif text-stone-500 leading-relaxed">{{ s.cierre_frase }}</p>
+          {% if s.cierre_autor %}<p class="mt-4 text-[10px] font-black uppercase tracking-[0.35em] text-stone-400">— {{ s.cierre_autor }}</p>{% endif %}
+        </div>
+        {% endif %}
+      </div>
+
+      <ul class="flex-1 w-full space-y-4 md:space-y-5">
+        {% for item in s.items %}
+        <li class="glass-card rounded-[1.75rem] md:rounded-[2rem] border-white/80 shadow-lg p-6 md:p-8 flex items-start gap-5 reveal-on-scroll" style="transition-delay: {{ loop.index0 * 110 }}ms;">
+          <span class="mt-1 shrink-0 w-7 h-7 md:w-8 md:h-8 rounded-full bg-brand/10 text-brand-dark flex items-center justify-center text-[11px] md:text-xs font-black">{{ loop.index }}</span>
+          <p class="text-base md:text-xl text-stone-700 font-light leading-relaxed">{{ item }}</p>
+        </li>
+        {% endfor %}
+      </ul>
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,40 @@
+[build]
+  command = "npm run build"
+  publish = "_site"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = true
+
+# Compatibilidad con los enlaces viejos del sitio en Firebase
+[[redirects]]
+  from = "/formacion/:slug"
+  to = "/formaciones/:slug/"
+  status = 301
+
+# Nombre nuevo de la formación
+[[redirects]]
+  from = "/formaciones/vision-extra-ocular/*"
+  to = "/formaciones/vision-extraocular/"
+  status = 301
+
+# Formaciones que hoy no se ofrecen: a la portada en vez de un 404.
+[[redirects]]
+  from = "/formaciones/intuicion/*"
+  to = "/#formacion"
+  status = 301
+
+[[redirects]]
+  from = "/formaciones/barras-access/*"
+  to = "/#formacion"
+  status = 301
+
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Robots-Tag = "noindex"

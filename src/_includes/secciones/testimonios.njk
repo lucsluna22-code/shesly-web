@@ -1,0 +1,95 @@
+{% import "partials/iconos.njk" as ico %}
+{% set t = home.testimonios %}
+
+<section id="testimonios" class="relative pt-16 pb-16 md:pt-20 md:pb-20 lg:pt-24 lg:pb-28 overflow-hidden bg-page">
+  <div class="absolute top-10 left-0 w-[500px] h-[500px] bg-white/40 rounded-full blur-[130px]"></div>
+  <div class="absolute bottom-0 right-0 w-[460px] h-[460px] bg-brand/10 rounded-full blur-[140px]"></div>
+
+  <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+
+    <div class="max-w-3xl space-y-5 md:space-y-7 mb-10 md:mb-14">
+      <span class="inline-block text-[10px] md:text-xs font-black uppercase tracking-[0.5em] text-brand-light">{{ t.etiqueta }}</span>
+      <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif text-stone-900 leading-[1.02] tracking-tight">{{ t.titulo_linea1 }} <span class="text-gradient italic">{{ t.titulo_destacado }}</span></h2>
+      <p class="text-base md:text-xl text-stone-500 font-light leading-relaxed">{{ t.bajada }}</p>
+    </div>
+
+{# Un solo video: se muestra grande y centrado. Varios: fila que se desliza de costado. #}
+{% macro tarjetaVideo(v, boton, forma) %}
+  <div class="relative rounded-[1.75rem] md:rounded-[2.5rem] overflow-hidden border-[6px] md:border-[10px] border-white shadow-[0_30px_70px_-22px_rgba(0,0,0,0.2)] cursor-pointer group {{ forma }} bg-stone-900" data-video-wrap>
+    <video class="w-full h-full object-cover block" playsinline autoplay loop muted preload="metadata"
+           {% if v.poster %}poster="{{ v.poster }}"{% endif %} data-video>
+      <source src="{{ v.video }}" type="video/mp4">
+    </video>
+    <div class="absolute inset-0 bg-black/10 flex flex-col items-center justify-center transition-opacity z-30 group-hover:bg-black/5" data-video-overlay>
+      <div class="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/40 backdrop-blur-xl border border-white/40 flex items-center justify-center animate-pulse shadow-2xl mb-3">
+        {{ ico.volumen("w-4 h-4 md:w-6 md:h-6 text-white") }}
+      </div>
+      <span class="text-white text-[8px] md:text-[10px] font-black uppercase tracking-[0.35em] bg-black/25 px-5 py-1.5 rounded-full backdrop-blur-sm shadow-xl">{{ boton }}</span>
+    </div>
+  </div>
+{% endmacro %}
+
+    {% if t.videos and t.videos.length == 1 %}
+    {% set v = t.videos[0] %}
+    <div class="max-w-3xl mx-auto mb-16 md:mb-24">
+      {{ tarjetaVideo(v, t.video_boton, "aspect-video") }}
+      <p class="mt-5 text-center">
+        <span class="block text-sm font-bold text-stone-900">{{ v.nombre }}</span>
+        <span class="block text-[10px] uppercase tracking-[0.2em] text-stone-400 mt-0.5">{{ v.detalle }}</span>
+      </p>
+    </div>
+
+    {% elif t.videos and t.videos.length %}
+    <div class="relative -mx-6 md:-mx-12 mb-16 md:mb-24">
+      <ul class="flex gap-5 md:gap-6 overflow-x-auto snap-x snap-mandatory scroll-px-6 md:scroll-px-12 px-6 md:px-12 pb-4 fila-testimonios">
+        {% for v in t.videos %}
+        <li class="snap-start shrink-0 w-[230px] sm:w-[260px] md:w-[280px]">
+          {{ tarjetaVideo(v, t.video_boton, "aspect-[9/16]") }}
+          <p class="mt-4 px-1">
+            <span class="block text-xs md:text-sm font-bold text-stone-900">{{ v.nombre }}</span>
+            <span class="block text-[10px] uppercase tracking-[0.2em] text-stone-400 mt-0.5">{{ v.detalle }}</span>
+          </p>
+        </li>
+        {% endfor %}
+        <li class="shrink-0 w-1 md:w-6" aria-hidden="true"></li>
+      </ul>
+      <p class="px-6 md:px-12 text-[10px] font-black uppercase tracking-[0.3em] text-stone-400 md:hidden">Desliza para ver más →</p>
+    </div>
+    {% endif %}
+
+    {% if t.mensajes_titulo %}
+    <h3 class="font-serif text-2xl md:text-3xl text-stone-900 mb-8 md:mb-10">{{ t.mensajes_titulo }}</h3>
+    {% endif %}
+
+    <div class="columns-1 sm:columns-2 lg:columns-3 gap-6 md:gap-8 [column-fill:balance]">
+      {% for c in t.lista %}
+      <figure class="break-inside-avoid mb-6 md:mb-8 glass-card rounded-[1.75rem] md:rounded-[2.25rem] border-white/80 shadow-lg {% if c.captura %}p-3 md:p-4{% else %}p-6 md:p-8{% endif %} flex flex-col reveal-on-scroll" style="transition-delay: {{ loop.index0 * 60 }}ms;">
+        {% if c.captura %}
+        <img src="{{ c.captura }}" alt="{{ c.texto }}" loading="lazy" decoding="async"
+             class="w-full h-auto rounded-[1.25rem] md:rounded-[1.5rem] border border-stone-100 bg-white">
+        <figcaption class="flex items-center gap-3.5 px-3 pt-4 pb-1">
+        {% else %}
+        <span class="font-serif text-4xl text-brand/25 leading-none mb-1" aria-hidden="true">&ldquo;</span>
+        <blockquote class="text-[15px] md:text-base text-stone-700 font-light leading-relaxed mb-6">{{ c.texto }}</blockquote>
+        <figcaption class="flex items-center gap-3.5 pt-4 border-t border-white/70 mt-auto">
+        {% endif %}
+          {% if c.foto %}
+          <img src="{{ c.foto }}" alt="{{ c.nombre }}" width="96" height="96" loading="lazy" decoding="async" class="w-10 h-10 rounded-full object-cover shrink-0 border-2 border-white shadow">
+          {% elif c.canal == "whatsapp" %}
+          <span class="w-10 h-10 rounded-full bg-[#25D366]/10 text-[#128C7E] shrink-0 flex items-center justify-center border-2 border-white shadow" aria-hidden="true">{{ ico.whatsapp(18, "w-4 h-4") }}</span>
+          {% elif c.canal == "instagram" %}
+          <span class="w-10 h-10 rounded-full bg-accent/15 text-stone-600 shrink-0 flex items-center justify-center border-2 border-white shadow" aria-hidden="true">{{ ico.instagram(18, "w-4 h-4") }}</span>
+          {% else %}
+          <span class="w-10 h-10 rounded-full bg-brand/10 text-brand-dark shrink-0 flex items-center justify-center font-serif border-2 border-white shadow" aria-hidden="true">{{ c.nombre | first }}</span>
+          {% endif %}
+          <span class="min-w-0">
+            <span class="block text-xs font-bold text-stone-900 truncate">{{ c.nombre }}</span>
+            <span class="block text-[10px] uppercase tracking-[0.2em] text-stone-400">{{ c.detalle }}</span>
+          </span>
+        </figcaption>
+      </figure>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>

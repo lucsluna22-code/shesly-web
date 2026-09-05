@@ -1,0 +1,321 @@
+# ─────────────────────────────────────────────────────────────
+#  Contenido de la página de inicio
+#  (editable desde el panel: /admin → "Página de inicio")
+# ─────────────────────────────────────────────────────────────
+
+# Orden y visibilidad de las secciones. Se pueden reordenar y ocultar.
+secciones:
+  - id: "hero"
+    visible: true
+  - id: "prueba"
+    visible: true
+  - id: "banner"
+    visible: true
+  - id: "si-te-pasa"
+    visible: true
+  - id: "testimonios"
+    visible: true
+  - id: "veo"
+    visible: true
+  - id: "sobre-mi"
+    visible: true
+  - id: "entrevistas"
+    visible: true
+  - id: "preguntas"
+    visible: true
+  - id: "cierre"
+    visible: true
+  - id: "formaciones"
+    visible: false        # tarjetas de varias formaciones: apagado, hoy solo se ofrece VEO
+  - id: "contacto"
+    visible: false        # sección extra con formulario, apagada por defecto
+
+hero:
+  etiqueta: "Visión Extraocular · en vivo"
+  titulo_linea1: "Entrena tu"
+  titulo_destacado: "intuición"
+  titulo_linea2: "y percepción."
+  subtitulo: "Aprende a ver sin los ojos."
+  bajada: "Visión Extraocular es el entrenamiento para reconocer color, forma e imagen con los ojos vendados. Es para quien percibe cosas que no sabe explicar y quiere aprender a usarlas. Mi método es propio, con"
+  bajada_destacado: "más de 600 sesiones online"
+  bajada_final: ", en el camino que abrió el neurofisiólogo mexicano Jacobo Grinberg."
+  boton_texto: "Ver el entrenamiento"
+  boton_url: "/formaciones/vision-extraocular/"
+  boton2_texto: "Ver una clase real"
+  boton2_url: "/#prueba"
+  imagen: "/assets/img/retrato-1.jpg"
+  imagen_alt: "Shesly Gutierrez, facilitadora de Visión Extraocular"
+  tarjeta_etiqueta: "Próxima sesión · $49 USD"
+  tarjeta_frase: "Viernes 11 a las 18:00 o sábado 12 a las 10:00, hora CDMX."
+
+# ── Paso 2 del recorrido: ve que es real ──
+prueba:
+  etiqueta: "Una clase de verdad"
+  titulo_linea1: "Esto pasa en"
+  titulo_destacado: "una clase"
+  titulo_linea2: "de VEO."
+  bajada: "Así se viven las experiencias de Visión Extraocular: con diversión, curiosidad, amor y expansión."
+  video: "/assets/video/veo-zoom-grupal.mp4"
+  video_poster: "/assets/img/veo-zoom-grupal-poster.jpg"
+  video_boton: "Activar sonido"
+  datos:
+    - titulo: "En vivo por Zoom"
+      texto: "Una sesión por semana, con el grupo y conmigo en pantalla."
+    - titulo: "Se practica desde el primer día"
+      texto: "Hay teoría, pero se experimenta desde la primera sesión. Aquí se practica más de lo que se estudia."
+    - titulo: "Cupo limitado"
+      texto: "Grupos chicos, para poder acompañar a cada persona de cerca."
+
+# ── La portada del programa completo, justo después de la clase real ──
+banner:
+  imagen: "/assets/img/banner-veo.jpg"
+  imagen_alt: "Descubre la Visión Extraocular — entrenamiento para expandir tu percepción"
+  url: "/formaciones/vision-extraocular/"
+  etiqueta: "El programa completo"
+  titulo: "Visión Extraocular"
+  texto: "Entrenamiento para expandir tu percepción y conectar con tu intuición de una forma práctica, divertida y consciente. Cinco sesiones grupales en vivo, con más de 600 sesiones online de experiencia detrás."
+  boton: "Ver el programa completo"
+
+# ── Paso 3 del recorrido: se reconoce en el problema ──
+si_te_pasa:
+  etiqueta: "¿Es para ti?"
+  titulo_linea1: "Si te pasa esto,"
+  titulo_destacado: "sigue"
+  titulo_linea2: "leyendo."
+  items:
+    - "Sientes cosas antes de que pasen y no sabes cómo explicarlo."
+    - "Llegaste a Jacobo Grinberg por tu cuenta y te quedaste con ganas de más."
+    - "Leíste mucho sobre percepción y consciencia, pero nunca lo practicaste con alguien que te guíe."
+    - "Estás en un camino espiritual y quieres algo concreto, no otra teoría."
+    - "Quieres leer la energía de una situación y redirigir aquello que no te beneficia."
+  cierre_frase: "\"Si tienes un cuerpo y una mente, es para ti. Y si sientes el llamado a experimentar, también.\""
+  cierre_autor: "Shesly"
+
+# ── Paso 4 del recorrido: confía ──
+testimonios:
+  etiqueta: "Lo que dicen las alumnas"
+  titulo_linea1: "Personas que ya"
+  titulo_destacado: "lo hicieron."
+  bajada: "Alumnas y alumnos contando, en sus palabras, qué les cambió al terminar el programa."
+  # Videos: se muestran en una fila que se desliza de costado.
+  videos:
+    - video: "/assets/video/testimonios-zoom.mp4"
+      poster: "/assets/img/testimonios-zoom-poster.jpg"
+      nombre: "Alumnas y alumnos de VEO"
+      detalle: "Al terminar el programa"
+  video_boton: "Activar sonido"
+  mensajes_titulo: "Y los mensajes tal como llegaron"
+  lista:
+    - texto: "Eres una persona muy linda, muy alegre, y transmites eso en cada sesión. Siento que conecté contigo por la confianza que le das a la gente sin conocerla. Estoy en un proceso de sanación, de encontrarme a mí misma, de expandirme, y este curso me ayudó mucho con todo lo que enseñas. Aparte mi intuición está mucho más trabajada."
+      nombre: "Alumna de VEO"
+      detalle: "Mensaje por Instagram"
+      canal: "instagram"
+      foto: ""
+      captura: "/assets/img/testimonios/captura-1.jpg"
+    - texto: "Qué agradable sorpresa el regalo que has dejado en mí con este curso: tener mucha más conexión, percepción, intuición, sueños lúcidos, premoniciones, y el saber qué va a pasar en muchas circunstancias. Un campo visual expandido, todos los días. Estoy sacando muy buen provecho de esto para mi crecimiento personal."
+      nombre: "Alumna de VEO"
+      detalle: "Mensaje por WhatsApp"
+      canal: "whatsapp"
+      foto: ""
+      captura: "/assets/img/testimonios/captura-2.jpg"
+    - texto: "Hola Shesly, primeramente agradecidísima al universo por haberte encontrado: te puso en mi camino para poder aprender más y ayudarme a expandir mi forma de ver las cosas. Me encantó el curso, fue una experiencia enriquecedora. Me gustó el contenido y la manera en que lo explicaste, fue muy clara, y que fuiste muy paciente al contestar todas mis dudas. Definitivamente lo recomendaría."
+      nombre: "Alumna de VEO"
+      detalle: "Mensaje por WhatsApp"
+      canal: "whatsapp"
+      foto: ""
+      captura: "/assets/img/testimonios/captura-3.jpg"
+    - texto: "Quería escribirte para darte las gracias por la sesión de ayer. Hablamos de algo que me hizo darme cuenta de mis ganas de cambiar para mejorar. De cambiar el juicio por la toma de conciencia. Muchas gracias, y agradecida de haberte encontrado en esta vida."
+      nombre: "Alumna de VEO"
+      detalle: "Mensaje por WhatsApp"
+      canal: "whatsapp"
+      foto: ""
+      captura: "/assets/img/testimonios/captura-4.jpg"
+    - texto: "Yo feliz de haberte conocido y compartir clases súper interesantes. Gracias por ayudar a la gente a reconectarse consigo misma. Me encantaría que más gente pueda conocerte y que lleven clases donde estás de compañera y maestra: la perspectiva del mundo cambia para bien."
+      nombre: "Alumna de VEO"
+      detalle: "Mensaje por WhatsApp"
+      canal: "whatsapp"
+      foto: ""
+      captura: "/assets/img/testimonios/captura-5.jpg"
+    - texto: "Muchas gracias, linda. Eres una gran maestra y compañera. Recomiendo mucho tomar VEO contigo: tienes paciencia y cariño por enseñar esta técnica."
+      nombre: "Alumna de VEO"
+      detalle: "Mensaje por WhatsApp"
+      canal: "whatsapp"
+      foto: ""
+      captura: "/assets/img/testimonios/captura-6.jpg"
+    - texto: "Me encantó conocerte, eres un alma dulce, muy linda. No me equivoqué al escoger que me enseñes un poquito más de esta herramienta: fue un curso rápido pero muy enriquecedor."
+      nombre: "Alumna de VEO"
+      detalle: "Mensaje por WhatsApp"
+      canal: "whatsapp"
+      foto: ""
+      captura: "/assets/img/testimonios/captura-7.jpg"
+    - texto: "¡Muchas gracias! Comienza una nueva etapa en mi vida."
+      nombre: "Alumna de VEO"
+      detalle: "Mensaje por WhatsApp"
+      canal: "whatsapp"
+      foto: ""
+      captura: "/assets/img/testimonios/captura-8.jpg"
+    - texto: "Listo, ¡qué felicidad la mía! Hacía mucho que quería esto contigo. Gracias a mi universo hermoso."
+      nombre: "Alumna de VEO"
+      detalle: "Mensaje por WhatsApp"
+      canal: "whatsapp"
+      foto: ""
+      captura: "/assets/img/testimonios/captura-9.jpg"
+    - texto: "Buenas noches… Muchas gracias por la sesión, muy bonita."
+      nombre: "Alumna de VEO"
+      detalle: "Mensaje por WhatsApp"
+      canal: "whatsapp"
+      foto: ""
+      captura: "/assets/img/testimonios/captura-10.jpg"
+    - texto: "Es muy buena instructora. Se las recomiendo, te enseña a usar tu intuición."
+      nombre: "Dulce C."
+      detalle: "Comentario en Instagram"
+      canal: "instagram"
+      foto: ""
+      captura: "/assets/img/testimonios/captura-11.jpg"
+    - texto: "La mejor maestra de intuición."
+      nombre: "Dulce C."
+      detalle: "Comentario en Instagram"
+      canal: "instagram"
+      foto: ""
+      captura: "/assets/img/testimonios/captura-12.jpg"
+    - texto: "Las clases más lindas que tuve. Y es verdad: nos hace ver más posibilidades."
+      nombre: "Alumna de VEO"
+      detalle: "Comentario en Instagram"
+      canal: "instagram"
+      foto: ""
+      captura: "/assets/img/testimonios/captura-13.jpg"
+
+# ── Paso 5 del recorrido: entiende qué puede comprar ──
+veo:
+  etiqueta: "La formación"
+  titulo_linea1: "Lo que vas a"
+  titulo_destacado: "desarrollar."
+  bajada: "Cinco capacidades, con ejercicios prácticos para integrarlas en tu vida cotidiana. No es un temario para leer: es entrenamiento."
+  capacidades:
+    - numero: "01"
+      titulo: "Intuición"
+      texto: "Desarrolla tu capacidad de percibir más allá de lo evidente y de confiar en tu sabiduría interna."
+    - numero: "02"
+      titulo: "Percepción"
+      texto: "Afina tu observación para comprender lo que otros no ven y tomar mejores decisiones."
+    - numero: "03"
+      titulo: "Confianza"
+      texto: "Fortalece tu seguridad interna y actúa desde la certeza, incluso en medio de la incertidumbre."
+    - numero: "04"
+      titulo: "Enfoque"
+      texto: "Entrena tu mente para sostener la atención en lo esencial y multiplicar tu claridad."
+    - numero: "05"
+      titulo: "Autoconocimiento"
+      texto: "Profundiza en tu identidad, tus valores y tu propósito, para vivir con coherencia y dirección."
+  incluye_titulo: "Y además"
+  incluye:
+    - "Sesiones grupales, divertidas y expansivas, para generar comunidad y conexión."
+    - "El manual de la formación y la carpeta con el material para imprimir."
+    - "Grupo de WhatsApp del curso, para las dudas entre una sesión y la otra."
+    - "Ejercicios guiados con hojas de colores, tarjetas y revistas."
+  boton: "Ver fechas y precios"
+  boton_url: "/#reservar"
+
+sobre_mi:
+  imagen: "/assets/img/retrato-3.jpg"
+  imagen_alt: "Shesly Gutierrez, facilitadora de Visión Extraocular"
+  etiqueta: "Quién te va a acompañar"
+  titulo_linea1: "Soy"
+  titulo_destacado: "Shesly"
+  titulo_linea2: "Gutiérrez."
+  titulo_linea3: ""
+  frase: "\"Mi propósito es ser el puente entre tu conciencia y la sabiduría infinita que reside en ti.\""
+  parrafos:
+    - "Desde niña hacía más preguntas de las que \"debería\". En lugar de dejar de preguntar, decidí explorar: la ciencia, la espiritualidad, distintas corrientes de pensamiento, escuelas religiosas, todo lo que pudiera ayudarme a entender quién era y qué era capaz de experimentar."
+    - "Mi camino no siempre fue sencillo. Atravesé crisis y etapas en las que llegué a cuestionarme profundamente la vida y a mí misma. Cada una de esas experiencias me llevó a seguir buscando, y aun así seguía sintiendo que faltaba algo. Así que exploré también lo que pocas personas se atreven a cuestionar: la percepción, la intuición y las capacidades que nuestro cuerpo puede desarrollar."
+    - "Esa búsqueda me llevó a entrenarme en Visión Extraocular, y con el tiempo entendí que no tenía que elegir entre ciencia y espiritualidad: para mí se encuentran en un mismo lugar, en la experiencia de nuestro propio cuerpo. De ahí nació Visión Cuántica, mi academia de Visión Extraocular."
+    - "Llevo diez años recorriendo este camino. Hoy comparto lo que viví, estudié y sigo descubriendo, de una manera simple, amorosa y divertida. Y quizá, como me pasó a mí, descubras que muchas de las respuestas que llevabas años buscando afuera siempre estuvieron dentro de ti."
+  insignias:
+    - icono: "👁️"
+      titulo: "VEO"
+      subtitulo: "Visión Extraocular"
+      color: "blue"
+    - icono: "🧭"
+      titulo: "10 años"
+      subtitulo: "En este camino"
+      color: "purple"
+    - icono: "✨"
+      titulo: "Visión Cuántica"
+      subtitulo: "Su academia"
+      color: "rose"
+
+# ── Entrevistas y apariciones ──
+entrevistas:
+  etiqueta: "En otros canales"
+  titulo_linea1: "Conversaciones"
+  titulo_destacado: "y entrevistas"
+  bajada: "Charlas largas donde cuento de dónde viene todo esto y cómo se practica. Se abren en YouTube."
+  lista:
+    - id: "GTYS3lUY7GA"
+      titulo: "Entrevista sobre Visión Extraocular"
+      detalle: "Entrevista"
+      url: "https://youtu.be/GTYS3lUY7GA"
+    - id: "89gePhuliHE"
+      titulo: "Conversación en vivo sobre percepción e intuición"
+      detalle: "En vivo"
+      url: "https://www.youtube.com/live/89gePhuliHE"
+
+# ── Paso 6 del recorrido: resuelve la última duda ──
+preguntas:
+  etiqueta: "Antes de decidir"
+  titulo_linea1: "Preguntas"
+  titulo_destacado: "frecuentes"
+  lista:
+    - pregunta: "¿Tiene efectos adversos?"
+      respuesta: "No. VEO potencia una habilidad que ya tienes, y en clase te doy las herramientas para aprender a usarla."
+    - pregunta: "¿Desde qué sesión puedo ver?"
+      respuesta: "Depende de la apertura y la energía de cada persona. Algunas perciben color en la primera clase; otras necesitan más práctica. Por eso el trabajo es semanal y acompañado."
+    - pregunta: "¿Para qué edades es?"
+      respuesta: "Para todas."
+    - pregunta: "¿Cómo sé si es para mí?"
+      respuesta: "Si tienes un cuerpo y una mente, es para ti. Y si sientes el llamado a experimentar, también."
+    - pregunta: "No tengo tiempo."
+      respuesta: "Son cinco encuentros, uno por semana, y eliges entre viernes a las 18:00 o sábado a las 10:00 (hora CDMX). Si quieres probar antes de comprometerte con el programa completo, hay una sesión suelta por $49 USD."
+    - pregunta: "No creo en estas cosas."
+      respuesta: "Si crees en el wifi, también puedes descubrir la información de la energía. No me creas: experiméntalo."
+    - pregunta: "¿Qué recibo después de pagar?"
+      respuesta: "Un mensaje de bienvenida, el PDF con la hoja de ruta y los términos, el acceso al grupo de WhatsApp, la carpeta de Drive con el material para imprimir y el manual."
+    - pregunta: "¿Puedo pagar en pesos mexicanos?"
+      respuesta: "Sí. La sesión suelta son $888 MXN y el programa completo $3,456 MXN. El cobro con tarjeta se procesa en dólares, así que tu banco hace la conversión."
+
+# ── Paso 7 del recorrido: paga o reserva ──
+cierre:
+  etiqueta: "Aparta la fecha"
+  titulo_linea1: "¿Lista para"
+  titulo_destacado: "comenzar?"
+  bajada: "Nos vemos el viernes 11 a las 18:00 o el sábado 12 a las 10:00, hora de Ciudad de México. Eliges el día que te queda mejor."
+  opciones:
+    - titulo: "Una probadita"
+      precio: "$49 USD"
+      precio_nota: "$888 MXN · una sola sesión grupal"
+      detalle: "Viernes 11 de septiembre a las 18:00 o sábado 12 a las 10:00 (hora CDMX). Una sesión en vivo por Zoom para probar la técnica antes de decidir."
+      boton: "Apartar mi lugar"
+      url: "https://buy.stripe.com/dRm6oG39P7w15do5gU5J60m"
+      destacado: false
+    - titulo: "La experiencia completa"
+      precio: "$199 USD"
+      precio_nota: "$3,456 MXN · cinco sesiones grupales"
+      detalle: "Una sesión por semana a partir del 11 de septiembre, siempre en tu mismo horario. Incluye el manual, el material para imprimir y el grupo de WhatsApp."
+      boton: "Quiero la formación completa"
+      url: "https://buy.stripe.com/4gMbJ025L5nT21c6kY5J60n"
+      destacado: true
+  nota: "Pago con tarjeta a través de Stripe. Cupo limitado, para poder acompañar a cada persona de cerca. Si prefieres preguntar antes, escríbeme por"
+
+formaciones:
+  etiqueta: "Formaciones y precios"
+  titulo_linea1: "Qué puedes"
+  titulo_destacado: "empezar hoy"
+  bajada: "De lo más liviano a lo más profundo. El precio está a la vista y se paga con tarjeta."
+  boton_tarjeta: "Ver el detalle completo"
+
+contacto:
+  etiqueta: "Escríbeme"
+  titulo: "Empecemos"
+  titulo_destacado: "juntas"
+  bajada: "Cuéntame en qué momento estás y te respondo personalmente."
+  boton: "Enviar mensaje"

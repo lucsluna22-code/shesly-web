@@ -1,0 +1,48 @@
+---
+layout: layouts/base.njk
+permalink: /pago-rechazado/index.html
+noindex: true
+tituloPagina: "El pago no se completó | Shesly Gutiérrez"
+descripcionPagina: "El pago no pudo procesarse. Puedes intentar de nuevo o escribirme."
+---
+{% import "partials/iconos.njk" as ico %}
+{% set wa = "https://wa.me/" + site.contacto.whatsapp + "?text=" + ("Hola Shesly! Intenté pagar y me rechazaron la tarjeta. ¿Me ayudas?" | urlencode) %}
+
+<section class="min-h-screen px-6 bg-page pt-32 pb-24">
+  <div class="max-w-2xl mx-auto space-y-10">
+
+    <header class="text-center space-y-6">
+      <div class="w-20 h-20 mx-auto rounded-full bg-accent/20 flex items-center justify-center">
+        <svg class="w-9 h-9 text-stone-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 9v4"/><path d="M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg>
+      </div>
+      <h1 class="text-4xl md:text-6xl font-serif text-stone-900 leading-[1.05]">El pago no se <span class="text-gradient italic">completó</span></h1>
+      <p class="text-lg text-stone-500 font-light">No se cobró nada. Tu lugar todavía no está reservado, pero se resuelve en un minuto.</p>
+    </header>
+
+    <ul class="space-y-4">
+      {% set causas = [
+        { t: "Prueba con otra tarjeta", d: "La razón más común es que el banco bloquea compras internacionales. Con otra tarjeta suele pasar sin problema." },
+        { t: "Avísale a tu banco", d: "Si es la única tarjeta que tienes, llama o entra a la app de tu banco y autoriza el cargo. Después vuelve a intentar." },
+        { t: "Revisa los datos", d: "Un número, una fecha de vencimiento o un código de seguridad mal escrito alcanza para que se rechace." }
+      ] %}
+      {% for c in causas %}
+      <li class="glass-card rounded-[1.75rem] border-white/80 shadow-lg p-6 md:p-8 space-y-1.5">
+        <h2 class="font-serif text-xl md:text-2xl text-stone-900 leading-tight">{{ c.t }}</h2>
+        <p class="text-sm md:text-base text-stone-500 font-light leading-relaxed">{{ c.d }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="/#reservar" class="text-center px-9 py-5 bg-stone-900 text-white rounded-full font-bold tracking-[0.25em] text-[10px] uppercase hover:bg-brand-dark transition-all">Intentar de nuevo</a>
+      <a href="{{ wa }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-3 px-9 py-5 bg-white/70 border border-white text-stone-700 rounded-full font-bold tracking-[0.25em] text-[10px] uppercase hover:bg-white transition-all">
+        {{ ico.whatsapp(16, "w-4 h-4") }} Pagar por transferencia
+      </a>
+    </div>
+
+    <p class="text-center">
+      <a href="/" class="text-[10px] font-black uppercase tracking-[0.3em] text-stone-400 hover:text-stone-900 transition-colors">Volver al inicio</a>
+    </p>
+
+  </div>
+</section>

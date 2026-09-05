@@ -1,0 +1,46 @@
+{% set q = home.preguntas %}
+
+<section id="preguntas" class="relative pt-16 pb-16 md:pt-20 md:pb-20 lg:pt-24 lg:pb-28 overflow-hidden bg-page">
+  <div class="absolute top-1/2 left-0 w-[480px] h-[480px] bg-white/40 rounded-full blur-[130px] -translate-y-1/2"></div>
+
+  <div class="max-w-5xl mx-auto px-6 md:px-12 relative z-10">
+
+    <div class="max-w-2xl space-y-5 md:space-y-6 mb-12 md:mb-16">
+      <span class="inline-block text-[10px] md:text-xs font-black uppercase tracking-[0.5em] text-brand-light">{{ q.etiqueta }}</span>
+      <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif text-stone-900 leading-[1.02] tracking-tight">{{ q.titulo_linea1 }} <span class="text-gradient italic">{{ q.titulo_destacado }}</span></h2>
+    </div>
+
+    <div class="space-y-3 md:space-y-4">
+      {% for f in q.lista %}
+      <details class="group glass-card rounded-[1.5rem] md:rounded-[2rem] border-white/80 shadow-lg overflow-hidden">
+        <summary class="cursor-pointer list-none flex items-center justify-between gap-6 p-6 md:p-8">
+          <h3 class="text-lg md:text-2xl font-serif text-stone-900 leading-snug">{{ f.pregunta }}</h3>
+          <span class="shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-full bg-brand/10 text-brand-dark flex items-center justify-center transition-transform duration-300 group-open:rotate-45" aria-hidden="true">
+            <svg class="w-4 h-4 md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+          </span>
+        </summary>
+        <div class="px-6 md:px-8 pb-7 md:pb-9 -mt-1">
+          <p class="text-base md:text-lg text-stone-600 font-light leading-relaxed max-w-2xl">{{ f.respuesta }}</p>
+        </div>
+      </details>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {%- for f in q.lista %}
+    {
+      "@type": "Question",
+      "name": {{ f.pregunta | dump | safe }},
+      "acceptedAnswer": { "@type": "Answer", "text": {{ f.respuesta | dump | safe }} }
+    }{% if not loop.last %},{% endif %}
+    {%- endfor %}
+  ]
+}
+</script>

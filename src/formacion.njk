@@ -1,0 +1,191 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: collections.formaciones
+  size: 1
+  alias: f
+permalink: "/formaciones/{{ f.data.slug }}/"
+eleventyComputed:
+  tituloPagina: "{{ f.data.titulo_largo or f.data.titulo }} | {{ site.nombre }}"
+  descripcionPagina: "{{ f.data.descripcion_corta }}"
+  imagenPagina: "{{ f.data.imagenes[0] or site.seo.og_imagen }}"
+---
+{% import "partials/iconos.njk" as ico %}
+{% set d = f.data %}
+{% set titulo = d.titulo_largo or d.titulo %}
+{% set palabras = titulo.split(" ") %}
+{% set wa = "https://wa.me/" + site.contacto.whatsapp + "?text=" + (d.mensaje_whatsapp | urlencode) %}
+{% set asideBg = {
+  "purple": "from-white to-purple-50",
+  "blue": "from-white to-blue-50",
+  "rose": "from-white to-rose-50",
+  "emerald": "from-white to-emerald-50",
+  "amber": "from-white to-amber-50"
+} %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "{{ titulo }}",
+  "description": "{{ d.descripcion_corta }}",
+  "provider": { "@type": "Person", "name": "{{ site.nombre }}", "url": "{{ site.url }}" },
+  "url": "{{ site.url }}/formaciones/{{ d.slug }}/"
+}
+</script>
+
+<div class="min-h-screen bg-white pt-24 pb-20">
+  <div class="container mx-auto px-6 md:px-12 max-w-7xl">
+
+    <a href="/" class="group mb-12 inline-flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.4em] text-stone-400 hover:text-stone-900 transition-colors">
+      {{ ico.flecha(16, "group-hover:-translate-x-2 transition-transform") }} Volver al inicio
+    </a>
+
+    <div class="flex flex-col lg:flex-row gap-16 lg:gap-24 items-start">
+
+      <div class="flex-1 space-y-10 min-w-0">
+        <div class="space-y-4">
+          <div class="text-6xl md:text-8xl mb-6">{{ d.icono }}</div>
+          <h1 class="text-5xl md:text-8xl font-serif text-stone-900 leading-none">
+            {%- for p in palabras -%}
+              <span class="{% if loop.last %}text-gradient italic{% endif %}">{{ p }} </span>
+            {%- endfor -%}
+          </h1>
+          <p class="text-xl md:text-2xl font-light text-stone-400 italic">{{ d.subtitulo }}</p>
+        </div>
+
+        <p class="text-lg md:text-2xl text-stone-600 leading-relaxed font-light">{{ d.descripcion_larga }}</p>
+
+        {% if d.temario and d.temario.length %}
+        <div class="pt-12 space-y-8">
+          <div class="flex items-center gap-6">
+            <div class="h-[1px] flex-1 bg-stone-100"></div>
+            <h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-stone-400">Temario de la Formación</h2>
+            <div class="h-[1px] flex-1 bg-stone-100"></div>
+          </div>
+          <div class="grid md:grid-cols-2 gap-x-12 gap-y-4">
+            {% for t in d.temario %}
+            <div class="flex items-start gap-4 group">
+              <span class="font-mono text-xs text-brand-light mt-1">{% if loop.index < 10 %}0{% endif %}{{ loop.index }}</span>
+              <p class="text-stone-700 font-light group-hover:text-stone-900 transition-colors">{{ t }}</p>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+
+        {% if d.imagenes and d.imagenes.length %}
+        <div class="pt-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {% for img in d.imagenes %}
+          <div class="group relative aspect-[4/5] overflow-hidden rounded-[2.5rem] shadow-lg border-[6px] border-white transition-all hover:scale-[1.02] hover:shadow-2xl">
+            <img src="{{ img }}" alt="Ilustración {{ titulo }} {{ loop.index }}" loading="lazy" decoding="async" class="w-full h-full object-cover object-top">
+            <div class="absolute inset-0 bg-gradient-to-t from-stone-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="pt-8 grid grid-cols-2 gap-8 border-t border-stone-100">
+          <div class="space-y-2">
+            <span class="text-[10px] font-black uppercase tracking-widest text-accent">Modalidad</span>
+            <p class="font-serif text-xl text-stone-800">{{ d.modalidad or ("Online" if d.evento.online else "Presencial") }}</p>
+          </div>
+          <div class="space-y-2">
+            <span class="text-[10px] font-black uppercase tracking-widest text-accent">Duración</span>
+            <p class="font-serif text-xl text-stone-800">{{ d.duracion }}</p>
+          </div>
+        </div>
+      </div>
+
+      <aside class="w-full lg:w-[450px] lg:sticky lg:top-32 flex-shrink-0">
+        <div class="glass-card p-10 md:p-12 rounded-[4rem] border-white shadow-2xl relative overflow-hidden bg-gradient-to-br {{ asideBg[d.color] or asideBg.purple }}">
+          <div class="relative z-10 space-y-8">
+
+            {% if d.evento.proximamente %}
+            <div class="space-y-8 text-center py-4">
+              <div class="space-y-4">
+                <div class="w-20 h-20 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-6"><span class="text-4xl">✨</span></div>
+                <h2 class="text-3xl font-serif text-stone-900 leading-tight">Próximamente</h2>
+                <p class="text-stone-600 font-light leading-relaxed">Estamos preparando una experiencia transformadora para ti. Muy pronto abriremos nuevas fechas.</p>
+              </div>
+              <div class="p-6 bg-white/50 rounded-3xl border border-white/50">
+                <p class="text-xs font-bold text-stone-800 uppercase tracking-widest mb-4">Mantente al tanto</p>
+                <p class="text-sm text-stone-500 font-light mb-6">Seguí las redes de Shesly para enterarte primero de la apertura de agenda.</p>
+                {% if site.redes.instagram %}
+                <div class="flex justify-center gap-4">
+                  <a href="{{ site.redes.instagram }}" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-10 h-10 rounded-full bg-stone-900 text-white flex items-center justify-center hover:bg-pink-500 transition-colors">{{ ico.instagram(18, "") }}</a>
+                </div>
+                {% endif %}
+              </div>
+              <button disabled class="w-full py-6 bg-stone-200 text-stone-400 rounded-[2rem] font-bold uppercase tracking-[0.3em] text-[10px] cursor-not-allowed">Reservas no disponibles</button>
+            </div>
+
+            {% else %}
+            <div class="space-y-2">
+              <span class="inline-block px-4 py-1.5 bg-stone-900 text-white text-[8px] font-black uppercase tracking-[0.3em] rounded-full">{{ d.evento.etiqueta or ("Acceso Inmediato" if d.evento.online else "Próxima Fecha") }}</span>
+              <h2 class="text-2xl md:text-3xl font-serif text-stone-900 pt-4 leading-tight">{{ d.evento.nombre }}</h2>
+            </div>
+
+            <div class="space-y-6">
+              {% if d.evento.fecha %}
+              <div class="flex items-start gap-4 text-stone-500">
+                {{ ico.calendario(20, "text-accent mt-1 flex-shrink-0") }}
+                <div><p class="text-sm font-bold text-stone-800">Fecha del Evento</p><p class="text-sm font-light">{{ d.evento.fecha }}</p></div>
+              </div>
+              {% endif %}
+              {% if d.evento.ubicacion %}
+              <div class="flex items-start gap-4 text-stone-500">
+                {{ ico.ubicacion(20, "text-accent mt-1 flex-shrink-0") }}
+                <div><p class="text-sm font-bold text-stone-800">Ubicación</p><p class="text-sm font-light">{{ d.evento.ubicacion }}</p></div>
+              </div>
+              {% endif %}
+              {% if d.evento.precio %}
+              <div class="flex items-start gap-4 text-stone-500">
+                {{ ico.precio(20, "text-accent mt-1 flex-shrink-0") }}
+                <div><p class="text-sm font-bold text-stone-800">Inversión</p><p class="text-3xl font-serif text-stone-900">{{ d.evento.precio }}</p></div>
+              </div>
+              {% endif %}
+              <div class="flex items-start gap-4 text-stone-500">
+                <div class="w-5 h-5 flex items-center justify-center mt-1 flex-shrink-0"><div class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></div></div>
+                <p class="text-sm text-stone-600 font-light leading-relaxed">{{ d.evento.descripcion }}</p>
+              </div>
+              {% if d.modalidad or d.evento.online %}
+              <div class="flex items-start gap-4 text-stone-500">
+                {{ ico.monitor(20, "text-accent mt-1 flex-shrink-0") }}
+                <div><p class="text-sm font-bold text-stone-800">Formato</p><p class="text-sm font-light">{{ d.modalidad or "100% Online" }}</p></div>
+              </div>
+              {% endif %}
+            </div>
+
+            {% if d.stripe_url %}
+            <a href="{{ d.stripe_url }}" target="_blank" rel="noopener noreferrer" data-evento="pagar" data-formacion="{{ d.slug }}"
+               class="w-full py-5 bg-stone-900 text-white rounded-[2rem] font-bold uppercase tracking-[0.25em] text-[10px] hover:bg-brand-dark transition-all transform hover:-translate-y-1 shadow-xl active:scale-95 flex items-center justify-center gap-3">
+              {{ d.boton_texto or d.evento.etiqueta_boton }}
+            </a>
+            {% if d.stripe_url_2 and d.boton2_texto %}
+            <a href="{{ d.stripe_url_2 }}" target="_blank" rel="noopener noreferrer" data-evento="pagar" data-formacion="{{ d.slug }}-taller"
+               class="w-full py-4 bg-white/70 border border-white text-stone-700 rounded-[2rem] font-bold uppercase tracking-[0.25em] text-[10px] hover:bg-white transition-all flex items-center justify-center gap-3">
+              {{ d.boton2_texto }}
+            </a>
+            {% endif %}
+            <a href="{{ wa }}" target="_blank" rel="noopener noreferrer" data-formacion="{{ d.slug }}"
+               class="w-full py-4 text-center text-[10px] font-black uppercase tracking-[0.25em] text-stone-400 hover:text-stone-900 transition-colors flex items-center justify-center gap-2">
+              {{ ico.whatsapp(14, "w-3.5 h-3.5 flex-shrink-0") }} Preguntar antes por WhatsApp
+            </a>
+            {% else %}
+            <a href="{{ wa }}" target="_blank" rel="noopener noreferrer" data-evento="reservar" data-formacion="{{ d.slug }}"
+               class="w-full py-5 bg-[#25D366] text-white rounded-[2rem] font-bold uppercase tracking-[0.25em] text-[10px] hover:bg-[#1ebe5d] transition-all transform hover:-translate-y-1 shadow-xl shadow-green-200/50 active:scale-95 flex items-center justify-center gap-3">
+              {{ ico.whatsapp(20, "w-5 h-5 flex-shrink-0") }} {{ d.evento.etiqueta_boton }}
+            </a>
+            {% endif %}
+            {% endif %}
+
+            <p class="text-center text-[9px] text-stone-400 font-medium tracking-widest uppercase">{{ d.evento.nota_final }}</p>
+          </div>
+          <div class="absolute top-0 right-0 w-32 h-32 bg-accent/20 rounded-full blur-3xl -z-0 translate-x-10 -translate-y-10"></div>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>

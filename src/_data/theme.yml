@@ -1,0 +1,25 @@
+# ─────────────────────────────────────────────────────────────
+#  Diseño: colores, tipografías y detalles visuales
+#  (editable desde el panel: /admin → "Diseño")
+# ─────────────────────────────────────────────────────────────
+
+colores:
+  fondo: "#f0f7ff"          # fondo general de la web
+  texto: "#1a1a1a"          # color de texto principal
+  marca: "#0ea5e9"          # color de marca (botones, links, detalles)
+  marca_clara: "#38bdf8"    # variante clara del color de marca
+  marca_oscura: "#0369a1"   # variante oscura (hover de botones)
+  acento: "#ff8aab"         # acento rosado (subrayados, detalles)
+  gradiente_desde: "#0ea5e9"
+  gradiente_hasta: "#a288ff"
+
+tipografias:
+  titulos: "Playfair Display"   # Playfair Display | Cormorant Garamond | Georgia
+  cuerpo: "Inter"               # Inter | system-ui
+
+efectos:
+  textura_ruido: true        # grano sutil sobre toda la página
+  animacion_hero: true       # ondas animadas del encabezado
+  intensidad_hero: 0.6       # 0 = invisible, 1 = máxima
+
+css_personalizado: ""        # CSS extra para ajustes finos (avanzado)

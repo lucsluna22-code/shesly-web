@@ -1,0 +1,46 @@
+{% import "partials/iconos.njk" as ico %}
+{% set p = home.prueba %}
+
+<section id="prueba" class="relative pt-16 pb-16 md:pt-20 md:pb-20 lg:pt-24 lg:pb-24 overflow-hidden bg-page">
+  <div class="absolute top-0 -left-20 w-96 h-96 bg-white/40 rounded-full blur-[120px]"></div>
+  <div class="absolute bottom-0 -right-20 w-[500px] h-[500px] bg-brand/10 rounded-full blur-[140px]"></div>
+
+  <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+
+    <div class="max-w-3xl mx-auto text-center space-y-5 md:space-y-7 mb-12 md:mb-16">
+      <span class="inline-block text-[10px] md:text-xs font-black uppercase tracking-[0.5em] text-brand-light">{{ p.etiqueta }}</span>
+      <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif text-stone-900 leading-[1.02] tracking-tight">{{ p.titulo_linea1 }} <span class="text-gradient italic">{{ p.titulo_destacado }}</span> {{ p.titulo_linea2 }}</h2>
+      <p class="text-base md:text-xl text-stone-500 font-light leading-relaxed max-w-2xl mx-auto">{{ p.bajada }}</p>
+    </div>
+
+    {% if p.video %}
+    <div class="relative w-full max-w-4xl mx-auto">
+      <div class="relative z-20 rounded-[2.5rem] md:rounded-[4rem] overflow-hidden border-[8px] md:border-[15px] border-white shadow-[0_40px_100px_-20px_rgba(0,0,0,0.15)] cursor-pointer group aspect-video bg-stone-100" data-video-wrap>
+        <video class="w-full h-full object-cover block" playsinline autoplay loop muted preload="metadata"
+               {% if p.video_poster %}poster="{{ p.video_poster }}"{% endif %} data-video>
+          <source src="{{ p.video }}" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 bg-black/10 flex flex-col items-center justify-center transition-opacity z-30 group-hover:bg-black/5" data-video-overlay>
+          <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/40 backdrop-blur-xl border border-white/40 flex items-center justify-center animate-pulse shadow-2xl mb-4">
+            {{ ico.volumen("w-6 h-6 md:w-8 md:h-8 text-white") }}
+          </div>
+          <span class="text-white text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em] bg-black/20 px-6 py-2 rounded-full backdrop-blur-sm shadow-xl">{{ p.video_boton }}</span>
+        </div>
+      </div>
+      <div class="absolute -inset-4 md:-inset-10 border border-brand/15 rounded-[3.5rem] md:rounded-[5.5rem] -z-0 pointer-events-none"></div>
+    </div>
+    {% endif %}
+
+    {% if p.datos %}
+    <div class="grid sm:grid-cols-3 gap-6 md:gap-10 max-w-4xl mx-auto mt-16 md:mt-24">
+      {% for d in p.datos %}
+      <div class="glass-card rounded-[2rem] p-7 md:p-8 border-white/80 shadow-lg reveal-on-scroll" style="transition-delay: {{ loop.index0 * 120 }}ms;">
+        <h3 class="font-serif text-xl md:text-2xl text-stone-900 leading-tight mb-3">{{ d.titulo }}</h3>
+        <p class="text-sm md:text-base text-stone-500 font-light leading-relaxed">{{ d.texto }}</p>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+  </div>
+</section>

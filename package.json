@@ -1,0 +1,20 @@
+{
+  "name": "shesly-gutierrez-web",
+  "version": "1.0.0",
+  "description": "Sitio web de Shesly Gutierrez — Facilitadora de Consciencia e Intuición",
+  "private": true,
+  "scripts": {
+    "css": "tailwindcss -i ./src/assets/css/tailwind.css -o ./_site/assets/css/style.css --minify",
+    "css:watch": "tailwindcss -i ./src/assets/css/tailwind.css -o ./_site/assets/css/style.css --watch",
+    "build": "npm run css && eleventy",
+    "start": "npm run css && npx concurrently \"npm:css:watch\" \"eleventy --serve\"",
+    "dev": "npm start"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "concurrently": "^8.2.2",
+    "js-yaml": "^4.1.0",
+    "playwright-core": "^1.62.1",
+    "tailwindcss": "^3.4.13"
+  }
+}

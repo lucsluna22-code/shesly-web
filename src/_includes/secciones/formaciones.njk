@@ -1,0 +1,87 @@
+{% set f = home.formaciones %}
+{% set borde = {
+  "purple": "border-purple-100",
+  "blue":   "border-blue-100",
+  "rose":   "border-rose-100",
+  "emerald":"border-emerald-100",
+  "amber":  "border-amber-100"
+} %}
+
+<section id="events" class="relative pt-16 pb-20 md:pt-20 md:pb-24 lg:pt-24 lg:pb-32 overflow-hidden bg-page">
+  <div class="absolute top-1/2 left-0 w-[500px] h-[500px] bg-white/40 rounded-full blur-[120px] -z-10 translate-y-[-50%] -translate-x-1/2"></div>
+
+  <div class="max-w-7xl mx-auto px-6 md:px-8">
+    <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-12 md:mb-20 gap-8 md:gap-12">
+      <div class="max-w-2xl space-y-4 md:space-y-6 text-center lg:text-left">
+        <h3 class="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] md:tracking-[0.6em] text-brand-light">{{ f.etiqueta }}</h3>
+        <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif text-stone-900 leading-[1.05] tracking-tight">{{ f.titulo_linea1 }} <br class="md:hidden"><span class="text-gradient italic">{{ f.titulo_destacado }}</span></h2>
+      </div>
+      <p class="text-lg md:text-xl text-stone-500 font-light max-w-sm border-l-0 lg:border-l border-stone-200 pl-0 lg:pl-8 text-center lg:text-left">{{ f.bajada }}</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 items-stretch">
+      {% for item in collections.formaciones %}
+      {% if item.data.visible %}
+      {% set d = item.data %}
+      {% set c = d.color or "purple" %}
+      {% set wa = "https://wa.me/" + site.contacto.whatsapp + "?text=" + (d.mensaje_whatsapp | urlencode) %}
+      {% set esDestacada = d.destacada %}
+
+      <article class="relative flex flex-col rounded-[2.5rem] md:rounded-[3rem] p-8 md:p-10 shadow-xl reveal-on-scroll transition-all duration-500 hover:-translate-y-2
+                      {% if esDestacada %}bg-stone-900 text-white border border-stone-800 md:scale-[1.02]{% else %}bg-white/80 backdrop-blur-xl border {{ borde[c] }}{% endif %}"
+               style="transition-delay: {{ loop.index0 * 120 }}ms;">
+
+        {% if esDestacada %}
+        <span class="absolute -top-3 left-8 md:left-10 px-4 py-1.5 rounded-full bg-brand text-white text-[9px] font-black uppercase tracking-[0.3em] shadow-lg whitespace-nowrap">Empieza por aquí</span>
+        {% endif %}
+
+        <div class="flex items-center gap-4 mb-7">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-[1.25rem] flex items-center justify-center text-3xl md:text-4xl shadow-lg shrink-0 {% if esDestacada %}bg-white/10{% else %}bg-white{% endif %}">
+            <span>{{ d.icono }}</span>
+          </div>
+          <div class="min-w-0">
+            <h3 class="font-serif text-2xl md:text-3xl leading-tight {% if esDestacada %}text-white{% else %}text-stone-900{% endif %}">{{ d.titulo }}</h3>
+            <p class="text-[10px] font-black uppercase tracking-[0.25em] mt-1.5 {% if esDestacada %}text-white/50{% else %}text-stone-400{% endif %}">{{ d.modalidad }}</p>
+          </div>
+        </div>
+
+        <p class="text-base md:text-lg font-light leading-relaxed mb-7 {% if esDestacada %}text-white/80{% else %}text-stone-600{% endif %}">{{ d.promesa or d.descripcion_corta }}</p>
+
+        <ul class="space-y-2.5 mb-8 text-sm {% if esDestacada %}text-white/60{% else %}text-stone-500{% endif %}">
+          <li class="flex items-start gap-3">
+            <span class="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0 {% if esDestacada %}bg-brand-light{% else %}bg-brand/50{% endif %}"></span>
+            <span>{{ d.duracion_corta or d.duracion }}</span>
+          </li>
+          {% if d.no_es_para %}
+          <li class="flex items-start gap-3">
+            <span class="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0 {% if esDestacada %}bg-white/25{% else %}bg-stone-300{% endif %}"></span>
+            <span><span class="font-medium {% if esDestacada %}text-white/75{% else %}text-stone-600{% endif %}">No es para:</span> {{ d.no_es_para }}</span>
+          </li>
+          {% endif %}
+        </ul>
+
+        <div class="mt-auto pt-7 border-t {% if esDestacada %}border-white/15{% else %}border-stone-100{% endif %}">
+          <p class="font-serif text-4xl md:text-5xl leading-none {% if esDestacada %}text-white{% else %}text-stone-900{% endif %}">{{ d.precio_principal or d.evento.precio }}</p>
+          {% if d.precio_nota %}<p class="mt-2 text-xs {% if esDestacada %}text-white/50{% else %}text-stone-400{% endif %}">{{ d.precio_nota }}</p>{% endif %}
+          {% if d.precio_alternativo %}<p class="mt-1 text-xs font-medium {% if esDestacada %}text-brand-light{% else %}text-brand-dark{% endif %}">{{ d.precio_alternativo }}</p>{% endif %}
+
+          <div class="mt-7 space-y-3">
+            <a href="{{ d.stripe_url or wa }}" {% if d.stripe_url %}target="_blank" rel="noopener"{% endif %} data-formacion="{{ d.slug }}"
+               class="block text-center px-7 py-4 rounded-full font-bold tracking-[0.2em] text-[10px] uppercase shadow-xl transition-all transform hover:-translate-y-0.5
+                      {% if esDestacada %}bg-white text-stone-900 hover:bg-brand hover:text-white{% else %}bg-stone-900 text-white hover:bg-brand-dark{% endif %}">{{ d.boton_texto or "Quiero anotarme" }}</a>
+
+            {% if d.boton2_texto %}
+            <a href="{{ d.stripe_url_2 or wa }}" {% if d.stripe_url_2 %}target="_blank" rel="noopener"{% endif %} data-formacion="{{ d.slug }}-prueba"
+               class="block text-center px-7 py-4 rounded-full font-bold tracking-[0.2em] text-[10px] uppercase transition-all
+                      {% if esDestacada %}bg-white/10 text-white hover:bg-white/20{% else %}bg-stone-100 text-stone-700 hover:bg-stone-200{% endif %}">{{ d.boton2_texto }}</a>
+            {% endif %}
+
+            <a href="/formaciones/{{ d.slug }}/" class="block text-center pt-2 text-[10px] font-black uppercase tracking-[0.3em] transition-colors {% if esDestacada %}text-white/50 hover:text-white{% else %}text-stone-400 hover:text-stone-900{% endif %}">{{ f.boton_tarjeta }}</a>
+          </div>
+        </div>
+      </article>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>

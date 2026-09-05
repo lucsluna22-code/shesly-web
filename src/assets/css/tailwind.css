@@ -1,0 +1,148 @@
+@import "../fonts/fonts.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+  }
+  body {
+    font-family: var(--font-body), system-ui, sans-serif;
+    background-color: rgb(var(--c-page));
+    color: rgb(var(--c-ink));
+    margin: 0;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, .font-serif {
+    font-family: var(--font-heading), Georgia, serif;
+  }
+  ::selection {
+    background: rgb(var(--c-brand) / 0.18);
+  }
+}
+
+@layer components {
+  .bg-noise::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.03;
+    z-index: 50;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 20px 60px -15px rgba(186, 230, 253, 0.2);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, var(--c-grad-from) 0%, var(--c-grad-to) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  .btn-impact {
+    position: relative;
+    background: rgb(var(--c-ink));
+    color: white;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+  .btn-impact:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .canvas-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: var(--hero-opacity, 0.6);
+  }
+  .canvas-container canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .stagger-up {
+    animation: staggerUp 1.4s cubic-bezier(0.19, 1, 0.22, 1) both;
+  }
+
+  .reveal-mask {
+    -webkit-mask-image: linear-gradient(to right, black, black 50%, transparent 50%);
+    mask-image: linear-gradient(to right, black, black 50%, transparent 50%);
+    -webkit-mask-size: 200% 100%;
+    mask-size: 200% 100%;
+    animation: reveal 2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+  }
+
+  /* Aparición al hacer scroll (sólo si hay JS; si no, todo se ve normal) */
+  .js .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.9s cubic-bezier(0.19, 1, 0.22, 1),
+                transform 0.9s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+  .js .reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes staggerUp {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes reveal {
+  0% { -webkit-mask-position: 100% 0; mask-position: 100% 0; }
+  100% { -webkit-mask-position: 0% 0; mask-position: 0% 0; }
+}
+@keyframes blob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(1deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .js .reveal-on-scroll { opacity: 1; transform: none; }
+}
+
+/* Fila de videos de testimonios: barra de desplazamiento discreta */
+.fila-testimonios {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(var(--c-brand) / 0.35) transparent;
+  -webkit-overflow-scrolling: touch;
+}
+.fila-testimonios::-webkit-scrollbar { height: 6px; }
+.fila-testimonios::-webkit-scrollbar-track { background: transparent; }
+.fila-testimonios::-webkit-scrollbar-thumb {
+  background: rgb(var(--c-brand) / 0.3);
+  border-radius: 999px;
+}
+.fila-testimonios::-webkit-scrollbar-thumb:hover { background: rgb(var(--c-brand) / 0.55); }

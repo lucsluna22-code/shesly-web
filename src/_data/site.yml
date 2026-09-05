@@ -1,0 +1,75 @@
+# ─────────────────────────────────────────────────────────────
+#  Configuración general del sitio
+#  (editable desde el panel: /admin → "Configuración del sitio")
+# ─────────────────────────────────────────────────────────────
+
+nombre: "Shesly Gutierrez"
+logo_linea1: "SHESLY"
+logo_linea2: "Gutierrez"
+
+url: "https://sheslygutierrez.com"
+idioma: "es"
+
+seo:
+  titulo: "Visión Extraocular con Shesly Gutiérrez | Entrena tu intuición y percepción"
+  descripcion: "Entrena tu intuición y percepción: aprende a ver sin los ojos. Formación en Visión Extraocular con método propio y más de 600 sesiones online, en vivo por Zoom. Sesión de prueba por $49 USD."
+  keywords: "visión extraocular, VEO, Jacobo Grinberg, visión cuántica, ver sin los ojos, curso de intuición online, Shesly Gutierrez, percepción extrasensorial, barras de access México"
+  og_titulo: "Entrena tu intuición y percepción"
+  og_descripcion: "Aprende a ver sin los ojos. Formación en Visión Extraocular en vivo por Zoom, con método propio y más de 600 sesiones online. Sesión de prueba por $49 USD."
+  og_imagen: "/assets/img/og-veo.jpg"          # 1200x630, la portada de VEO con el título
+
+contacto:
+  email: "sheslygutierrez1@gmail.com"
+  telefono_texto: "+52 55 3179 96 32"
+  whatsapp: "525531799632"       # solo números, con código de país
+  ubicacion: "Ciudad de México, México"
+
+redes:
+  instagram: "https://www.instagram.com/sheslygutierrez/"
+  facebook: ""                    # vacío = no se muestra
+  youtube: ""
+  tiktok: ""
+
+navegacion:
+  - texto: "Inicio"
+    url: "/"
+  - texto: "La formación"
+    url: "/#formacion"
+  - texto: "Testimonios"
+    url: "/#testimonios"
+  - texto: "Entrevistas"
+    url: "/#entrevistas"
+  - texto: "Preguntas"
+    url: "/#preguntas"
+
+boton_nav:
+  texto: "Apartar mi lugar"
+  tipo: "enlace"                  # whatsapp | enlace
+  url: "/#reservar"
+
+pie:
+  descripcion: "Visión Cuántica, academia de Visión Extraocular. Formación en vivo por Zoom, desde Ciudad de México."
+  copyright: "© 2026 Shesly Gutierrez. Todos los derechos reservados."
+  credito_texto: "Comunicación y diseño web:"
+  credito_nombre: "Lucas Luna"
+  credito_url: ""
+  legales:
+    - texto: "Privacidad"
+      url: "/privacidad/"
+    - texto: "Términos"
+      url: "/terminos/"
+
+extras:
+  boton_whatsapp_flotante: true
+  # Enlace de invitación al grupo de WhatsApp del curso.
+  # Se muestra en /pago-exitoso/ apenas alguien termina de pagar.
+  # Conviene renovarlo (WhatsApp → Grupo → Enlace de invitación → Restablecer)
+  # cada vez que arranca un grupo nuevo.
+  whatsapp_grupo: "https://chat.whatsapp.com/B87XOiDLAzBEtHH7zwcroT"
+  mensaje_whatsapp_general: "Hola Shesly! ✨ Me gustaría más información sobre tus formaciones."
+
+# Pegá acá los IDs cuando los tengas. Vacío = no se carga nada.
+analytics:
+  google_analytics_id: ""         # ej: G-XXXXXXXXXX
+  meta_pixel_id: ""               # ej: 123456789012345
+  google_site_verification: ""

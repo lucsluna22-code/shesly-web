@@ -1,0 +1,55 @@
+{% import "partials/iconos.njk" as ico %}
+{% set waNav = "https://wa.me/" + site.contacto.whatsapp + "?text=" + (site.extras.mensaje_whatsapp_general | urlencode) %}
+{% set btnUrl = waNav if site.boton_nav.tipo == "whatsapp" else site.boton_nav.url %}
+
+<nav id="nav-principal" class="fixed top-0 left-0 right-0 z-[100] transition-all duration-500 bg-transparent py-6">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="flex justify-between items-center h-12">
+
+      <div class="flex-shrink-0 relative z-[130]">
+        <a href="/" class="flex flex-col group outline-none text-left" aria-label="Inicio">
+          <span class="text-xl md:text-2xl font-serif tracking-[0.2em] text-stone-900 leading-none">{{ site.logo_linea1 }}</span>
+          <span class="text-[8px] md:text-[9px] font-black tracking-[0.4em] text-brand group-hover:text-purple-400 transition-colors mt-1 uppercase">{{ site.logo_linea2 }}</span>
+        </a>
+      </div>
+
+      <div class="hidden lg:flex flex-1 justify-center items-center gap-12 text-[10px] uppercase tracking-[0.4em] font-bold text-stone-500">
+        {% for item in site.navegacion %}
+        <a href="{{ item.url }}" class="hover:text-stone-900 transition-all relative group">{{ item.texto }}<span class="absolute -bottom-1 left-0 w-0 h-px bg-accent transition-all group-hover:w-full"></span></a>
+        {% endfor %}
+      </div>
+
+      <div class="flex items-center gap-6 relative z-[130]">
+        <div class="hidden lg:block">
+          <a href="{{ btnUrl }}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 px-8 py-3 bg-stone-900 text-white rounded-full text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-green-500 transition-all transform hover:-translate-y-0.5 active:scale-95 shadow-lg shadow-stone-100">
+            {% if site.boton_nav.tipo == "whatsapp" %}{{ ico.whatsapp(14, "text-green-300") }}{% else %}{{ ico.calendario(14, "text-brand-light") }}{% endif %}{{ site.boton_nav.texto }}
+          </a>
+        </div>
+
+        <button type="button" id="btn-menu" class="lg:hidden w-10 h-10 flex items-center justify-center text-stone-900 focus:outline-none bg-stone-50 rounded-full border border-stone-100" aria-label="Menú" aria-expanded="false" aria-controls="menu-movil">
+          <div class="w-5 h-4 relative flex flex-col justify-between items-end">
+            <span class="h-0.5 bg-current transition-all duration-300 ease-out w-5"></span>
+            <span class="h-0.5 bg-current transition-all duration-300 ease-out w-3"></span>
+            <span class="h-0.5 bg-current transition-all duration-300 ease-out w-5"></span>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <div id="menu-movil" class="fixed inset-0 bg-white transition-all duration-500 lg:hidden flex flex-col z-[120] opacity-0 -translate-y-full pointer-events-none">
+      <div class="h-32"></div>
+      <div class="flex-1 flex flex-col items-center justify-start pt-12 px-10 overflow-y-auto">
+        <div class="flex flex-col items-center gap-12 transition-all duration-700 delay-150 translate-y-10 opacity-0" data-menu-inner>
+          {% for item in site.navegacion %}
+          <a href="{{ item.url }}" class="text-4xl sm:text-5xl font-serif text-stone-800" data-cerrar-menu>{{ item.texto }}</a>
+          {% endfor %}
+          <div class="pt-8">
+            <a href="{{ btnUrl }}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 px-10 py-5 bg-stone-900 text-white rounded-full text-[10px] font-bold tracking-[0.3em] uppercase">
+              {% if site.boton_nav.tipo == "whatsapp" %}{{ ico.whatsapp(18, "text-green-300") }}{% else %}{{ ico.calendario(18, "text-brand-light") }}{% endif %}{{ site.boton_nav.texto }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

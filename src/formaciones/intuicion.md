@@ -1,5 +1,5 @@
 ---
-titulo: Intuición
+titulo: Formacion Intuición
 titulo_largo: ''
 subtitulo: El lenguaje de tu cuerpo
 slug: intuicion

@@ -1,6 +1,6 @@
 # Estado del sitio
 
-Actualizado el 5 de septiembre. La web quedó enfocada solo en **Visión Extraocular (VEO)**
+Actualizado el 25 de septiembre. La web quedó enfocada solo en **Visión Extraocular (VEO)**
 y ya cobra sola. Se puede publicar tal como está.
 
 ---
@@ -108,18 +108,18 @@ funcionando.
   hacer falta un calendario.
 - **Fotos de clases.** La página interna de la formación todavía usa las dos imágenes
   viejas. Con seis u ocho fotos reales queda bastante mejor.
-- **El panel `/admin`.** Sigue sin funcionar: falta el worker de autenticación
-  (`sveltia-cms-auth` en Cloudflare Workers) y su URL en `base_url` de
-  `src/admin/config.yml`. Todos los campos nuevos ya están cargados —incluido el banner—,
-  así que el día que se conecte, Shesly puede editar textos, precios, fechas, testimonios y
-  videos sola.
-- **GitHub.** Sin conectar. Hoy se publica arrastrando el ZIP a `app.netlify.com/drop`.
+- **El panel `/admin` y GitHub.** En proceso de activación (25 de septiembre). El login ya
+  no usa un worker de Cloudflare: lo resuelve Netlify con un proveedor OAuth de GitHub, así
+  que no hace falta `base_url`. Los pasos están en `ACTIVAR-PANEL.md`. Todos los campos ya
+  están cargados, así que cuando quede conectado Shesly puede editar textos, precios,
+  fechas, testimonios y videos sola, y cada cambio se publica solo.
 
 ---
 
 ## Recordatorio de publicación
 
-1. Arrastrar `shesly-web-netlify.zip` a `app.netlify.com/drop` (el `index.html` ya está en
-   la raíz del ZIP, verificado).
-2. Si es un sitio nuevo: *Site configuration → Forms → Enable form detection*, y volver a
-   desplegar. Viene apagado y sin eso el formulario del brief no guarda nada.
+Cuando Netlify quede vinculado al repositorio, se publica sola cada vez que se guarda un
+cambio (desde el panel o con un `git push`). Ya no hace falta arrastrar el ZIP.
+
+Mientras tanto, el camino viejo sigue sirviendo: arrastrar `shesly-web-netlify.zip` a
+`app.netlify.com/drop`, con el `index.html` en la raíz del ZIP.

@@ -3,3 +3,6 @@ _site/
 .DS_Store
 .env
 *.log
+
+# Material viejo, fuera del sitio
+_viejo/

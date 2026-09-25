@@ -1,5 +1,5 @@
 ---
-titulo: Visión Extraocular (EN VIVO)
+titulo: Visión Extraocular
 titulo_largo: ''
 subtitulo: VEO MÓDULO ONLINE 🧠
 slug: vision-extraocular

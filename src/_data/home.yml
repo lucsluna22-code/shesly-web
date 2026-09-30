@@ -17,7 +17,7 @@ secciones:
     visible: true
   - id: preguntas
     visible: true
-  - id: cierre
+  - id: hero
     visible: true
   - id: formaciones
     visible: true
@@ -30,7 +30,7 @@ hero:
   titulo_linea2: y percepción.
   subtitulo: Aprende a ver sin los ojos.
   bajada: Visión Extraocular es el entrenamiento para reconocer color, forma e imagen con los ojos vendados. Es para quien percibe cosas que no sabe explicar y quiere aprender a usarlas. Mi método es propio, con
-  bajada_destacado: más de 600 sesiones online
+  bajada_destacado: más de 600 sesiones exitosas
   bajada_final: ', en el camino que abrió el neurofisiólogo mexicano Jacobo Grinberg.'
   boton_texto: Ver el entrenamiento
   boton_url: /#banner
@@ -39,7 +39,7 @@ hero:
   imagen: /assets/img/retrato-1.jpg
   imagen_alt: Shesly Gutierrez, facilitadora de Visión Extraocular
   tarjeta_etiqueta: Próxima sesión · $49 USD
-  tarjeta_frase: Viernes 11 a las 18:00 o sábado 12 a las 10:00, hora CDMX.
+  tarjeta_frase: Viernes 23 a las 18:00 o sábado 24 12 a las 10:00, hora CDMX.
 sobre_mi:
   imagen: /assets/img/retrato-3.jpg
   imagen_alt: Shesly Gutierrez, facilitadora de Visión Extraocular

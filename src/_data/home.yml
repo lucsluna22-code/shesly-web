@@ -1,7 +1,7 @@
 secciones:
   - id: hero
     visible: true
-  - id: prueba
+  - id: veo
     visible: true
   - id: banner
     visible: true

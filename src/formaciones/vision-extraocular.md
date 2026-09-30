@@ -17,7 +17,7 @@ modalidad: Online, en vivo por Zoom
 duracion_corta: 5 sesiones · viernes 18:00 o sábado 10:00 (CDMX)
 precio_principal: $199 USD
 precio_nota: $3,456 MXN · cinco sesiones grupales
-precio_alternativo: o $49 USD una sola sesión, para probarrr
+precio_alternativo: o $49 USD una sola sesión, para probarr
 boton_texto: Comprar el programa
 stripe_url: https://buy.stripe.com/4gMbJ025L5nT21c6kY5J60n
 boton2_texto: Una probadita · $49 USD

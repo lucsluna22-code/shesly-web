@@ -14,7 +14,7 @@ destacada: true
 promesa: Limpiar tu canal perceptivo y afinar la percepción hasta reconocer color, forma e imagen con los ojos vendados. Y llevar esa misma escucha a tu vida diaria.
 no_es_para: 'Para quien necesita un resultado garantizado en una fecha fija: la apertura de cada persona es distinta.'
 modalidad: Online, en vivo por Zoom
-duracion_corta: 5 sesiones · viernes 18:00 o sábado 10:00 (CDMX)
+duracion_corta: 5 sesiones · viernes 18:00 o sábado 10:00am (CDMX)
 precio_principal: $199 USD
 precio_nota: $3,456 MXN · cinco sesiones grupales
 precio_alternativo: o $49 USD una sola sesión, para probarr
@@ -36,9 +36,9 @@ evento:
   nombre: Programa de 5 semanas
   etiqueta: Próxima fecha
   precio: ''
-  descripcion: Cinco sesiones grupales, una por semana, en vivo por Zoom. Eliges viernes a las 18:00 o sábado a las 10:00 (hora CDMX). Incluye el manual, la carpeta con el material para imprimir y el grupo de WhatsApp del curso.
+  descripcion: Cinco sesiones grupales, una por semana, en vivo por Zoom. Elige entre viernes a las 18:00 o sábado a las 10:00am (hora CDMX). Incluye el manual, la carpeta con el material para imprimir y el grupo de WhatsApp del curso.
   online: true
-  fecha: Elige Viernes 23  o el sábado 24 de Octubre de 2026
+  fecha: Elige entre Viernes 23  o sábado 24 de Octubre de 2026
   ubicacion: ''
   proximamente: false
   etiqueta_boton: Comprar el programa

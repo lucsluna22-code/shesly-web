@@ -267,9 +267,9 @@ preguntas:
       respuesta: Sí. La sesión suelta son $888 MXN y el programa completo $3,456 MXN. El cobro con tarjeta se procesa en dólares, así que tu banco hace la conversión.
 cierre:
   etiqueta: Aparta la fecha
-  titulo_linea1: ¿Lista para
+  titulo_linea1: ¿Listx para
   titulo_destacado: comenzar?
-  bajada: Nos vemos el viernes 11 a las 18:00 o el sábado 12 a las 10:00, hora de Ciudad de México. Eliges el día que te queda mejor.
+  bajada: Comenzamos 2 grupos el viernes 23 a las 18:00 o el sábado 24 de Octubre a las 10:00, hora de Ciudad de México. Eliges el día que te queda mejor.
   opciones:
     - titulo: Una probadita
       precio: $49 USD

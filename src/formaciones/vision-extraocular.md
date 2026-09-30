@@ -35,9 +35,10 @@ imagenes:
 evento:
   nombre: Programa de 5 semanas
   etiqueta: Próxima fecha
+  precio: ''
   descripcion: Cinco sesiones grupales, una por semana, en vivo por Zoom. Eliges viernes a las 18:00 o sábado a las 10:00 (hora CDMX). Incluye el manual, la carpeta con el material para imprimir y el grupo de WhatsApp del curso.
   online: true
-  fecha: Empieza el viernes 11 o el sábado 12 de septiembre de 2026
+  fecha: Elige Viernes 23  o el sábado 24 de Octubre de 2026
   ubicacion: ''
   proximamente: false
   etiqueta_boton: Comprar el programa

@@ -9,7 +9,7 @@ secciones:
     visible: true
   - id: testimonios
     visible: true
-  - id: veo
+  - id: banner
     visible: true
   - id: sobre-mi
     visible: true

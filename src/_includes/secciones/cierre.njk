@@ -13,12 +13,12 @@
       <p class="text-base md:text-xl text-stone-500 font-light leading-relaxed">{{ c.bajada }}</p>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+    <div class="grid gap-6 md:gap-8 mx-auto {% if c.opciones.length > 1 %}md:grid-cols-2 max-w-4xl{% else %}max-w-md{% endif %}">
       {% for o in c.opciones %}
       <div class="relative rounded-[2.5rem] md:rounded-[3rem] p-8 md:p-12 flex flex-col shadow-xl reveal-on-scroll
                   {% if o.destacado %}bg-stone-900 text-white border border-stone-800{% else %}glass-card border-white/80{% endif %}"
            style="transition-delay: {{ loop.index0 * 120 }}ms;">
-        {% if o.destacado %}
+        {% if o.destacado and c.opciones.length > 1 %}
         <span class="absolute -top-3 left-8 md:left-12 px-4 py-1.5 rounded-full bg-brand text-white text-[9px] font-black uppercase tracking-[0.3em] shadow-lg">Más elegido</span>
         {% endif %}
         <h3 class="font-serif text-2xl md:text-3xl leading-tight {% if o.destacado %}text-white{% else %}text-stone-900{% endif %}">{{ o.titulo }}</h3>

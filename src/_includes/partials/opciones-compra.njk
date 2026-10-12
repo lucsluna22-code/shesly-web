@@ -18,12 +18,12 @@
   <p class="max-w-2xl mx-auto text-center text-base md:text-xl text-stone-500 font-light leading-relaxed mb-12 md:mb-16">{{ bajada }}</p>
   {% endif %}
 
-  <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+  <div class="grid gap-6 md:gap-8 mx-auto {% if ops.length > 1 %}md:grid-cols-2 max-w-4xl{% else %}max-w-md{% endif %}">
     {% for o in ops %}
     <div class="relative rounded-[2.5rem] md:rounded-[3rem] p-8 md:p-11 flex flex-col shadow-xl
                 {% if o.destacado %}bg-stone-900 text-white border border-stone-800{% else %}glass-card border-white/80{% endif %}"
 >
-      {% if o.destacado %}
+      {% if o.destacado and ops.length > 1 %}
       <span class="absolute -top-3 left-8 md:left-11 px-4 py-1.5 rounded-full bg-brand text-white text-[9px] font-black uppercase tracking-[0.3em] shadow-lg">Más elegido</span>
       {% endif %}
       <h3 class="font-serif text-2xl md:text-3xl leading-tight {% if o.destacado %}text-white{% else %}text-stone-900{% endif %}">{{ o.titulo }}</h3>

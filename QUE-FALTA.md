@@ -108,17 +108,18 @@ funcionando.
   hacer falta un calendario.
 - **Fotos de clases.** La página interna de la formación todavía usa las dos imágenes
   viejas. Con seis u ocho fotos reales queda bastante mejor.
-- **El panel `/admin` y GitHub.** En proceso de activación (25 de septiembre). El login ya
-  no usa un worker de Cloudflare: lo resuelve Netlify con un proveedor OAuth de GitHub, así
-  que no hace falta `base_url`. Los pasos están en `ACTIVAR-PANEL.md`. Todos los campos ya
-  están cargados, así que cuando quede conectado Shesly puede editar textos, precios,
-  fechas, testimonios y videos sola, y cada cambio se publica solo.
+- **El panel `/admin` y GitHub: activos desde el 25 de septiembre.** El sitio se publica
+  solo desde el repositorio privado `lucsluna22-code/shesly-web` cada vez que se guarda un
+  cambio. El login lo resuelve Netlify (app OAuth "Panel Shesly Gutiérrez" en GitHub).
+  Shesly (usuaria de GitHub `Shesly1`) está invitada como colaboradora; entra en
+  `sheslygutierrez.com/admin` → **Sign In with GitHub**. Antes de tocar archivos a mano,
+  hacer `git pull` para traer lo que ella haya cambiado desde el panel.
 
 ---
 
 ## Recordatorio de publicación
 
-Cuando Netlify quede vinculado al repositorio, se publica sola cada vez que se guarda un
+El sitio se publica sola cada vez que se guarda un
 cambio (desde el panel o con un `git push`). Ya no hace falta arrastrar el ZIP.
 
 Mientras tanto, el camino viejo sigue sirviendo: arrastrar `shesly-web-netlify.zip` a

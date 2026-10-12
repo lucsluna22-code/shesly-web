@@ -38,8 +38,8 @@ hero:
   boton2_url: /#prueba
   imagen: /assets/img/retrato-1.jpg
   imagen_alt: Shesly Gutierrez, facilitadora de Visión Extraocular
-  tarjeta_etiqueta: Próxima sesión · $49 USD
-  tarjeta_frase: Viernes 23 a las 18:00 o sábado 24 12 a las 10:00, hora CDMX.
+  tarjeta_etiqueta: Próximo grupo · $199 USD
+  tarjeta_frase: Viernes 30 de octubre a las 18:30 o sábado 31 a las 10:30, hora CDMX.
 sobre_mi:
   imagen: /assets/img/retrato-3.jpg
   imagen_alt: Shesly Gutierrez, facilitadora de Visión Extraocular
@@ -258,30 +258,23 @@ preguntas:
     - pregunta: ¿Cómo sé si es para mí?
       respuesta: Si tienes un cuerpo y una mente, es para ti. Y si sientes el llamado a experimentar, también.
     - pregunta: No tengo tiempo.
-      respuesta: Son cinco encuentros, uno por semana, y eliges entre viernes a las 18:00 o sábado a las 10:00 (hora CDMX). Si quieres probar antes de comprometerte con el programa completo, hay una sesión suelta por $49 USD.
+      respuesta: Son cinco encuentros, uno por semana, y eliges entre viernes a las 18:30 o sábado a las 10:30 (hora CDMX).
     - pregunta: No creo en estas cosas.
       respuesta: 'Si crees en el wifi, también puedes descubrir la información de la energía. No me creas: experiméntalo.'
     - pregunta: ¿Qué recibo después de pagar?
       respuesta: Un mensaje de bienvenida, el PDF con la hoja de ruta y los términos, el acceso al grupo de WhatsApp, la carpeta de Drive con el material para imprimir y el manual.
     - pregunta: ¿Puedo pagar en pesos mexicanos?
-      respuesta: Sí. La sesión suelta son $888 MXN y el programa completo $3,456 MXN. El cobro con tarjeta se procesa en dólares, así que tu banco hace la conversión.
+      respuesta: Sí. El programa completo son $3,456 MXN. El cobro con tarjeta se procesa en dólares, así que tu banco hace la conversión.
 cierre:
   etiqueta: Aparta la fecha
   titulo_linea1: ¿Listx para
   titulo_destacado: comenzar?
-  bajada: Comenzamos 2 grupos el viernes 23 a las 18:00 o el sábado 24 de Octubre a las 10:00, hora de Ciudad de México. Eliges el día que te queda mejor.
+  bajada: Comenzamos 2 grupos el viernes 30 de octubre a las 18:30 o el sábado 31 de octubre a las 10:30, hora de Ciudad de México. Eliges el día que te queda mejor.
   opciones:
-    - titulo: Una probadita
-      precio: $49 USD
-      precio_nota: $888 MXN · una sola sesión grupal
-      detalle: Viernes 11 de septiembre a las 18:00 o sábado 12 a las 10:00 (hora CDMX). Una sesión en vivo por Zoom para probar la técnica antes de decidir.
-      boton: Apartar mi lugar
-      url: https://buy.stripe.com/dRm6oG39P7w15do5gU5J60m
-      destacado: false
     - titulo: La experiencia completa
       precio: $199 USD
       precio_nota: $3,456 MXN · cinco sesiones grupales
-      detalle: Una sesión por semana a partir del 11 de septiembre, siempre en tu mismo horario. Incluye el manual, el material para imprimir y el grupo de WhatsApp.
+      detalle: Cinco sesiones, una por semana, a partir del viernes 30 o el sábado 31 de octubre, siempre en tu mismo horario. Incluye el manual, el material para imprimir y el grupo de WhatsApp.
       boton: Quiero la formación completa
       url: https://buy.stripe.com/4gMbJ025L5nT21c6kY5J60n
       destacado: true

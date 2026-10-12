@@ -14,7 +14,10 @@ eleventyComputed:
 {% import "partials/opciones-compra.njk" as compra %}
 {% set d = f.data %}
 {# Las dos opciones de compra: propias de la formación si las tiene, si no las del inicio. #}
-{% set ops = d.opciones or home.cierre.opciones %}
+{# Si una opción del inicio dice a qué formación pertenece, solo aparece en esa página. #}
+{% set opsInicio = [] %}
+{% for o in home.cierre.opciones %}{% if not o.formacion or o.formacion == d.slug %}{% set _ = opsInicio.push(o) %}{% endif %}{% endfor %}
+{% set ops = d.opciones or opsInicio %}
 {% set titulo = d.titulo_largo or d.titulo %}
 {% set palabras = titulo.split(" ") %}
 {% set wa = "https://wa.me/" + site.contacto.whatsapp + "?text=" + (d.mensaje_whatsapp | urlencode) %}
@@ -136,7 +139,8 @@ eleventyComputed:
     </div>
 
     {% elif ops and ops.length %}
-    {{ compra.opcionesCompra(ops, wa, "Reserva tu lugar", home.cierre.bajada, home.cierre.nota) }}
+    {# Fechas y nota de Stripe del inicio: solo en la formación principal (la que tiene grupos en vivo). #}
+    {{ compra.opcionesCompra(ops, wa, "Reserva tu lugar", home.cierre.bajada if d.destacada else "", home.cierre.nota if d.destacada else "") }}
     {% if d.evento.nota_final %}
     <p class="mt-8 text-center text-[9px] text-stone-400 font-medium tracking-widest uppercase">{{ d.evento.nota_final }}</p>
     {% endif %}

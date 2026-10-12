@@ -1,6 +1,8 @@
 secciones:
   - id: hero
     visible: true
+  - id: prueba
+    visible: true
   - id: veo
     visible: true
   - id: banner
@@ -9,18 +11,16 @@ secciones:
     visible: true
   - id: testimonios
     visible: true
-  - id: banner
-    visible: true
   - id: sobre-mi
     visible: true
   - id: entrevistas
     visible: true
   - id: preguntas
     visible: true
-  - id: hero
+  - id: cierre
     visible: true
   - id: formaciones
-    visible: true
+    visible: false
   - id: contacto
     visible: false
 hero:
@@ -278,6 +278,15 @@ cierre:
       boton: Quiero la formación completa
       url: https://buy.stripe.com/4gMbJ025L5nT21c6kY5J60n
       destacado: true
+      formacion: vision-extraocular
+    - titulo: Formación Intuición
+      precio: $1111 MXN
+      precio_nota: pago único · $66 USD
+      detalle: El lenguaje de tu cuerpo. Formación online grabada, a tu ritmo y con acceso de por vida, para despertar tu intuición y aprender a escuchar tu brújula interna.
+      boton: Consultar por WhatsApp
+      url: https://wa.me/525531799632?text=Hola%20Shesly%21%20%F0%9F%AB%80%E2%9C%A8%20Me%20interesa%20mucho%20la%20formaci%C3%B3n%20de%20%2AIntuici%C3%B3n%20%E2%80%93%20El%20Lenguaje%20del%20Cuerpo%2A.%20%C2%BFMe%20puedes%20dar%20m%C3%A1s%20informaci%C3%B3n%20sobre%20c%C3%B3mo%20acceder%3F
+      destacado: false
+      formacion: intuicion
   nota: Pago con tarjeta a través de Stripe. Cupo limitado, para poder acompañar a cada persona de cerca. Si prefieres preguntar antes, escríbeme por
 contacto:
   etiqueta: Escríbeme

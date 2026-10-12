@@ -319,7 +319,7 @@ collections:
               - label: "Opciones (hasta 3)"
                 name: "opciones"
                 widget: "list"
-                max: 3
+                max: 4
                 summary: "{{titulo}} — {{precio}}"
                 fields:
                   - { label: "Título", name: "titulo", widget: "string" }
@@ -329,6 +329,7 @@ collections:
                   - { label: "Texto del botón", name: "boton", widget: "string" }
                   - { label: "Enlace de pago de Stripe", name: "url", widget: "string", required: false, hint: "Si lo dejás vacío, el botón lleva a WhatsApp." }
                   - { label: "Destacar esta opción", name: "destacado", widget: "boolean", default: false }
+                  - { label: "Formación a la que pertenece", name: "formacion", widget: "select", options: ["vision-extraocular", "intuicion", "barras-access"], required: false, hint: "La tarjeta se muestra en el inicio y, además, solo en la página de esta formación." }
               - { label: "Nota al pie", name: "nota", widget: "text", required: false }
 
           - label: "Sección Contacto"

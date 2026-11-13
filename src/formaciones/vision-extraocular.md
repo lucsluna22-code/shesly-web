@@ -38,7 +38,7 @@ evento:
   precio: ''
   descripcion: Cinco sesiones grupales, una por semana, en vivo por Zoom. Elige entre viernes a las 18:30 o sábado a las 10:30 (hora CDMX). Incluye el manual, la carpeta con el material para imprimir y el grupo de WhatsApp del curso.
   online: true
-  fecha: Elige entre viernes 30 o sábado 31 de octubre de 2026
+  fecha: Elige entre viernes 4 o sábado 5 de Diciembre de 2026
   ubicacion: ''
   proximamente: false
   etiqueta_boton: Comprar el programa

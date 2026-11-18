@@ -10,7 +10,7 @@ color: purple
 descripcion_corta: El lenguaje de tu cuerpo. Una formación online para despertar tu intuición, aprender a escuchar tu brújula interna y descubrir tus habilidades naturales.
 descripcion_larga: Bienvenidx al lenguaje de tu cuerpo 🙌🏻 Una formación online para despertar tu intuición. Tu cuerpo es tu mejor brújula. Todos tenemos esta capacidad, solo necesitamos aprender a escucharla. Aquí reuní 10 años de exploración entre ciencia, espiritualidad y diferentes escuelas, resumidos de forma práctica para que puedas aplicarlo en tu vida. Descubrir tus habilidades puede ser una de las aventuras más increíbles.
 duracion: A tu ritmo (Acceso de por vida)
-destacada: false
+destacada: true
 promesa: 'Aprender a leer las señales de tu cuerpo y usarlas para decidir: en el dinero, las relaciones, el trabajo y la salud.'
 no_es_para: 'Para quien quiere clases en vivo y acompañamiento semanal: esta formación es grabada.'
 modalidad: Online, grabada
@@ -19,7 +19,7 @@ precio_principal: $1111 MXN
 precio_nota: pago único · $66 USD
 precio_alternativo: ''
 boton_texto: Comprar la formación
-stripe_url: ''
+stripe_url: https://buy.stripe.com/bJe14meSx6rX0X86kY5J60f
 boton2_texto: ''
 stripe_url_2: ''
 temario:
